@@ -16,7 +16,7 @@ public class JSONmanager : MonoBehaviour
     void Start()
     {
         
-        var basicSpell = new Spell()
+        var basicSpell = new Spell() // Example spell loading
         {
             Name = "Acid Splash",
             Source = "SRD",
@@ -36,8 +36,8 @@ public class JSONmanager : MonoBehaviour
             HigherLvl = "This spell's damage increases by 1d6 when you reach 5th Level (2d6), 11th level (3d6) and 17th level (4d6)."
         };
 
-        var spellJson = JsonConvert.SerializeObject(basicSpell);
-        Debug.Log(spellJson);
+        var spellJson = JsonConvert.SerializeObject(basicSpell); // Convert object to JSON --> https://www.youtube.com/watch?v=pJtuuolUhCc
+        Debug.Log(spellJson); 
         
         //Debug.Log(Application.dataPath); // Storing standard assets
         //Debug.Log(Application.persistentDataPath); // Storing files that should persist between application runtimes
