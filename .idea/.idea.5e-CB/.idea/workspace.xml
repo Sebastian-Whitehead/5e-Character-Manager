@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b24b9e15-7e9d-4fcc-a697-a4773f369bb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/App.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/ContentTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/ContentTypes.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +35,26 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "RiderNuGetOptionsPageId",
+    "settings.editor.selected.configurable": "CodeLensConfigurable",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\sebas\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\sebas\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\sebas\\AppData\\Local\\Symbols\\src"
+    ]
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.21f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\sebas\Documents\GitHub\5e-CB -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\sebas\Documents\GitHub\5e-CB" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.21f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\sebas\Documents\GitHub\5e-CB -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
@@ -62,10 +73,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="1828">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="1828" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -85,6 +96,7 @@
       <workItem from="1680334976397" duration="2803000" />
       <workItem from="1680349187382" duration="952000" />
       <workItem from="1680552033921" duration="6028000" />
+      <workItem from="1680605009777" duration="9082000" />
     </task>
     <servers />
   </component>
