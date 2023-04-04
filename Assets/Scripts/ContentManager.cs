@@ -61,10 +61,7 @@ public class ContentManager : MonoBehaviour
         //TODO: LoadSRD Content
         //TODO: Load Custom Content from sub folders
     }
-
     
-    
-
     public void UnloadJsonFromPath(string[] jsonPaths)
     {
         foreach (var path in jsonPaths)
