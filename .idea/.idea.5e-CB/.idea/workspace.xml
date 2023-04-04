@@ -6,15 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="b24b9e15-7e9d-4fcc-a697-a4773f369bb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/ContentTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Scripts/ContentTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Characters.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Content.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Content/Custom.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Content/SRD.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Custom Content.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/PDF.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Plugins/Newtonsoft.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Plugins/Newtonsoft.Json.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/CharacterManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/CharacterManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/ContentTypes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/ContentTypes.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/JSONmanager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/JSONmanager.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Assets/Scripts/JSONmanager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -24,28 +37,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\sebas\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\sebas\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\sebas\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\sebas\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\sebas\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\sebas\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.21f1\Editor\Unity.exe" />
@@ -97,6 +110,7 @@
       <workItem from="1680349187382" duration="952000" />
       <workItem from="1680552033921" duration="6028000" />
       <workItem from="1680605009777" duration="9082000" />
+      <workItem from="1680627030143" duration="10287000" />
     </task>
     <servers />
   </component>

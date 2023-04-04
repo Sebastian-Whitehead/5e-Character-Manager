@@ -1,13 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
-/*TODO:
- - Background
- - Racial Ability
- - Player Race
- - Player Class
- - Player Subclass
-    */
+
+//TODO: SRD Package in program directory
 
 namespace ContentTypes
 {
@@ -16,8 +12,9 @@ namespace ContentTypes
      //         or
      ...        or similar
      (if! x)    What to set a variable to if not applicable if not specified then dont define
-    */ 
+    */
     
+    //BUG: Verify This Structure
     public class Spell
     {
         public string Name { get; set; }
@@ -43,6 +40,7 @@ namespace ContentTypes
         // > may not be useful
     }
 
+    //BUG: Verify This Structure
     public class Item
     {
         public string Name { get; set; }
@@ -59,7 +57,8 @@ namespace ContentTypes
         public string Damage { get; set; }
         public string DamageType { get; set; }
     }
-
+    
+    //TODO: Create JSON structure for character backgrounds
     public class Background
     {
         
@@ -71,40 +70,57 @@ namespace ContentTypes
         public string Source { get; set; }
         public string Description { get; set; }
         
+        //TODO: Verify that all Requirements provided here are relevant and that all standard bases are covered 
         // All Requirements for the Feat
         public bool Prerequisites { get; set; }     // Are there required prerequisites
         public bool ReqSpellCasting { get; set; }
         public string ReqClassFeature { get; set; }
         public string ReqRace { get; set; }
         public string ReqSubrace { get; set; }
-        public string[] ReqAbilityScore { get; set; }   // {ability, Minimum score, ...}     
+        public List<string> ReqAbilityScore { get; set; }   // {ability, Minimum score, ...}     
         public string ReqFeat { get; set; }             
         public string ReqProficiency { get; set; }
         public string ReqOther { get; set; }
     }
 
-    public class ClassAbility
+    
+
+    //TODO: Create JSON structure for Class Features
+    public class ClassFeature
     {
         
     }
     
-    public class RacialAbility
+    //TODO: Create JSON structure for Race Abilities 
+    public class RaceAbility
+    {
+        
+    }
+    
+    //TODO: Create JSON structure for Races
+    public class Race
     {
         
     }
 
-    public class PlayerRace
+    //TODO: Create JSON structure for SubRaces
+    public class SubRace
     {
         
     }
 
+    //TODO: Create JSON structure for Character Classes
     public class PlayerClass
     {
         
     }
     
+    //TODO: Create JSON structure for Character Sub Classes
     public class PlayerSubclass{
     
     }
+    
+    
+    //TODO: Create a template ReadME file for all the different data structures
 }
 
