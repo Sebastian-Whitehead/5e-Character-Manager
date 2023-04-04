@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b24b9e15-7e9d-4fcc-a697-a4773f369bb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Characters.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Content.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Content/Custom.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Content/SRD.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Custom Content.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/PDF.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Plugins.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Plugins/Newtonsoft.Json.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Plugins/Newtonsoft.Json.dll.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/CharacterManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/CharacterManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/ContentTypes.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/ContentTypes.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/JSONmanager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Scripts/JSONmanager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ContentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ContentManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +93,7 @@
       <workItem from="1680349187382" duration="952000" />
       <workItem from="1680552033921" duration="6028000" />
       <workItem from="1680605009777" duration="9082000" />
-      <workItem from="1680627030143" duration="10287000" />
+      <workItem from="1680627030143" duration="10622000" />
     </task>
     <servers />
   </component>

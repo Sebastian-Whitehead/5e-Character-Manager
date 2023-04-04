@@ -9,6 +9,7 @@ using UnityEngine.Windows;
 
 using ContentTypes;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine.Networking.Match;
 using File = System.IO.File;
 
@@ -41,9 +42,6 @@ public class ContentManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //_srdPackagePath = @"C:\Users\sebas\Documents\GitHub\5e-CB\Assets\Assets\SRD_Content";
-        
-        
         // _srdFiles = new string[] System.IO.Directory.GetFiles(_srdPackagePath);
         //var spellJson = JsonConvert.SerializeObject(basicSpell); // Convert object to JSON --> https://www.youtube.com/watch?v=pJtuuolUhCc
         //Debug.Log(spellJson); 
@@ -60,7 +58,6 @@ public class ContentManager : MonoBehaviour
         _srdFiles = System.IO.Directory.GetFiles(_srdPackagePath);
         _customFiles = System.IO.Directory.GetFiles(_customContentPath);
         
-        
         //TODO: LoadSRD Content
         //TODO: Load Custom Content from sub folders
     }
@@ -75,6 +72,14 @@ public class ContentManager : MonoBehaviour
             File.ReadAllText(@path);
             //TODO: Split File Into Objects
             //TODO: Insert Objects into loadedContent object dictionaries (each entry should key = name)
+        }
+    }
+    
+    public void UnloadJsonFromPath(string[] jsonPaths, string type) //TODO: Overload that only loads one content type
+    {
+        foreach (var path in jsonPaths)
+        {
+            File.ReadAllText(@path);
         }
     }
 
