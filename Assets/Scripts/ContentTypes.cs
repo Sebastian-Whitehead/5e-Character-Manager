@@ -61,7 +61,17 @@ namespace ContentTypes
     //TODO: Create JSON structure for character backgrounds
     public class Background
     {
+        public string Name { get; set; }
+        public string Source { get; set; }
+        public string Description { get; set; }
+
+        public int NumberOfLanguages { get; set; }
+        public int PredefinedLanguages { get; set; }
         
+        public string[] SkillProficiencies { get; set; }
+        public string[] ToolProficiencies { get; set; }
+        public string[] StartingEquipment { get; set; }
+        public int[] StartingMoney { get; set; }
     }
 
     public class Feat
@@ -119,8 +129,7 @@ namespace ContentTypes
     public class PlayerSubclass{
     
     }
-    
-    
+
     //TODO: Create a template ReadME file for all the different data structures
 }
 
