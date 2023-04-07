@@ -92,25 +92,28 @@ namespace ContentTypes
         public string ReqProficiency { get; set; }
         public string ReqOther { get; set; }
     }
-
-    
-
-    //TODO: Create JSON structure for Class Features
-    public class ClassFeature
-    {
-        
-    }
-    
-    //TODO: Create JSON structure for Race Abilities 
-    public class RaceAbility
-    {
-        
-    }
     
     //TODO: Create JSON structure for Races
     public class Race
     {
+        public string Name { get; set; }
+        public string Source { get; set; }
+        public string Description { get; set; }
         
+        public string HitDice { get; set; }
+        public string[] ArmorProf { get; set; }
+        public string[] WeaponProf { get; set; }
+        public string[] ToolProf { get; set; }
+        
+        public string[] SavingThrowProf { get; set; }
+        public int SkillProfNumber { get; set; }
+        public string[] SkillProfOptions { get; set; }
+        
+        public string[] StartingEquip { get; set; } // [wooden shield // simple weapon, Leather armor, explorer's pack,...]
+        public int[] GoldAlternative { get; set; } // [2,4,10] = 2d4x10
+        
+        public string[] MulticlassAbilityMin { get; set; } // ~ [Wisdom, 13]
+        public string[] MulticlassProfs { get; set; } // ~ [light armor, medium armor, shield]
     }
 
     //TODO: Create JSON structure for SubRaces
@@ -129,7 +132,19 @@ namespace ContentTypes
     public class PlayerSubclass{
     
     }
-
+    
+    //TODO: Create JSON structure for Class Features
+    public class ClassFeature
+    {
+        
+    }
+    
+    //TODO: Create JSON structure for Race Abilities 
+    public class RaceAbility
+    {
+        
+    }
+    
     //TODO: Create a template ReadME file for all the different data structures
 }
 
