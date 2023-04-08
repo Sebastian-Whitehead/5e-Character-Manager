@@ -80,7 +80,7 @@ public class ContentManager : MonoBehaviour
         }
     }
 
-    public void OpenEachCcPackage(string[] collections)
+    public void OpenEachCcPackage(string[] collections) // Unload custom content packages
     {
         foreach (var subFolder in collections)
         {
@@ -88,11 +88,14 @@ public class ContentManager : MonoBehaviour
         }
     }
     
+    
+    /*
     public List<string> AppendToExportList(object obj, List<string> outJsonList)
     {
         var jsonOut = JsonConvert.SerializeObject();
         outJsonList.Add(jsonOut);
         return outJsonList;
     }
+    */
 }
 
