@@ -88,7 +88,7 @@ public class ContentManager : MonoBehaviour
         }
     }
     
-    public List<string> AppendToOutlist(object obj, List<string> outJsonList)
+    public List<string> AppendToExportList(object obj, List<string> outJsonList)
     {
         var jsonOut = JsonConvert.SerializeObject();
         outJsonList.Add(jsonOut);
