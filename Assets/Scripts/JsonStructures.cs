@@ -6,6 +6,7 @@ using UnityEngine;
 using JsonFormats.DataStructures;
 
 //TODO: SRD Package in program directory
+//TODO: Go Through and reduce independent information that could just be included in the details / description field;
 
 namespace JsonFormats
 {
