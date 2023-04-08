@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine.Windows;
-
-using ContentTypes;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine.Networking.Match;
 using File = System.IO.File;
+
+using JsonFormats;
+using JsonFormats.DataStructures;
+using Newtonsoft.Json;
 
 //TODO: Method: Create Content Package System in appdata directory (persistentdatapath) load all paths as strings into list of files to offloaded into respective content lists (Spells, Items, backgrounds, Feats, Race abilities, Class Features, Races, Subraces, Classes, Subclasses)
 //TODO: Function to Unload JSON From File to List
@@ -25,7 +26,6 @@ public class Loaded
     [NonSerialized] public IDictionary<string, RaceAbility> RaceAbilities;
     [NonSerialized] public IDictionary<string, ClassFeature> ClassFeatures;
     [NonSerialized] public IDictionary<string, Race> Races;
-    [NonSerialized] public IDictionary<string, SubRace> SubRaces;
     [NonSerialized] public IDictionary<string, PlayerClass> Classes;
     [NonSerialized] public IDictionary<string, PlayerSubclass> Subclasses;
 }
