@@ -6,17 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b24b9e15-7e9d-4fcc-a697-a4773f369bb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Newtonsoft.Json.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Newtonsoft.Json.dll.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Code Holder.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Code Holder.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ContentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ContentManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ContentTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/JsonStructures.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ContentTypes.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/JsonStructures.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WIP packages/betalgo.openai.gpt3.6.8.3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WIP packages/openai-6.8.3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/JsonStructures.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/JsonStructures.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +100,7 @@
       <workItem from="1680627030143" duration="10622000" />
       <workItem from="1680695035874" duration="1835000" />
       <workItem from="1680812834586" duration="1647000" />
-      <workItem from="1680934858033" duration="28739000" />
+      <workItem from="1680934858033" duration="36161000" />
     </task>
     <servers />
   </component>

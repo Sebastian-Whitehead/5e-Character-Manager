@@ -4,13 +4,14 @@ using System.Security.Cryptography.X509Certificates;
 using OpenAI.Moderations;
 using UnityEngine;
 using JsonFormats.DataStructures;
+using Mono.CompilerServices.SymbolWriter;
+using Unity.VisualScripting;
 
 //TODO: SRD Package in program directory
 //TODO: Go Through and reduce independent information that could just be included in the details / description field;
 
 namespace JsonFormats
 {
-    //TODO: Reconsider Weather Object arrays or structs should be used
     public class Spell
     {
         public string Name { get; set; }
@@ -19,81 +20,125 @@ namespace JsonFormats
         
         public int Level { get; set; }
         public MagicSchool Type { get; set; }
-        public object[] CastTime { get; set; }
-        public object[] Components { get; set; }
-        public object[] Range { get; set; }
-        public object[] Duration { get; set; }
+        public CastTime CastingTime { get; set; }
+        public Range SpellRange { get; set; }
+        public AOE AreaOfEffect { get; set; }
+        public SpellComponents Components { get; set; }
+        public Duration SpellDuration { get; set; }
         public bool Ritual { get; set; }
-        public object[] Aoe { get; set; }
-        public object[] WeaponAttackType { get; set; }
-        
-        public ScaleEffect[] HigherLevelEffect { get; set; }
         public PlayerClass[] AvailableForClasses { get; set; }
         
         public DiceRoll Damage { get; set; }
         public SavingThrow SpellSave { get; set; }
+        public ScaleEffect[] HigherLevelEffect { get; set; }
     }
     
-    public class NonmagicalItem
+    public class Item
     {
         public string Name { get; set; }
         public string Source { get; set; }
         public string Description { get; set; }
-
-        public ItemType Type { get; set; }
-        public ItemSubType ItemType { get; set; }
-        public ArmourStatBlock ArmourStats { get; set; }
-        public WeaponStatBlock WeaponStats { get; set; }
         
+        public ItemSubType ItemType { get; set; }
         public ItemRarity Rarity { get; set; }
         public int Weight { get; set; }
         public Coin Value { get; set; }
         
         public int[] Damage { get; set; } // [nr. of dice, dice size, times x, plus y]
         public string DamageType { get; set; }
+
+        public class Armour : Item
+        {
+            public ArmourSubTypes ItemType;
+            public ArmourAc ArmourClass;
+            public int MinStrength;
+            public bool StealthDisadvantage;
+        }
+
+        public class Weapon : Item
+        {
+            public WeaponCategory ItemType;
+            public Range WeaponRange;
+            public Ability BaseAbility;
+            public WeaponProperty[] Properties;
+            public int AttackBonus;
+            public Damage[] Dmg;
+        }
+        
+        public class MagicalItem: Item
+        {
+            public MagicItemType ItemType;
+            public bool RequiresAttunement { get; set; }
+            public string AttunementDetails { get; set; }
+            public MagicCharages Charges { get; set; }
+        }
+        public class MagicalArmour: Armour
+        {
+            public bool RequiresAttunement { get; set; }
+            public string AttunementDetails { get; set; }
+            public MagicCharages Charges { get; set; }
+        }
+        public class MagicalWeapon : Weapon
+        {
+            public bool RequiresAttunement { get; set; }
+            public string AttunementDetails { get; set; }
+            public MagicCharages Charges { get; set; }
+        }
     }
-    public class MagicalItem: NonmagicalItem
-    {
-        public MagicItemType ItemType;
-        public bool RequiresAttunement { get; set; }
-        public string AttunementDetails { get; set; }
-        public MagicCharages Charges { get; set; }
-    }
-    
+
+
     public class Background
     {
+        public string Name { get; set; }
+        public string Source { get; set; }
+        public string Introduction { get; set; }
+        
     }
 
+    //TODO: WIP
     public class Feat
     {
-    }
+        public string Name { get; set; }
+        public string Source { get; set; }
+        public string Description { get; set; }
 
-    //TODO: Create JSON structure for Races
+        public Prerequisite[] FeatPrerequisites { get; set; }
+        
+    }
+    
     public class Race
     {
+        public string Name { get; set; }
+        public string Source { get; set; }
+        public string Description { get; set; }
     }
-
-    //TODO: Complete JSON structure for Character Classes
+    
     public class PlayerClass
     {
+        public string Name { get; set; }
+        public string Source { get; set; }
+        public string Description { get; set; }
     }
-
-    //TODO: Create JSON structure for Character Sub Classes
+    
     public class PlayerSubclass
     {
-
+        public string Name { get; set; }
+        public string Source { get; set; }
+        public string Description { get; set; }
     }
-
-    //TODO: Create JSON structure for Class Features
+    
     public class ClassFeature
     {
-
+        public string Name { get; set; }
+        public string Source { get; set; }
+        public string Description { get; set; }
     }
-
-    //TODO: Create JSON structure for Race Abilities 
+    
     public class RaceAbility
     {
-
+        public string Name { get; set; }
+        public string Source { get; set; }
+        public string Description { get; set; }
     }
 
     //TODO: Create a template ReadME file for all the different data structures
@@ -101,82 +146,6 @@ namespace JsonFormats
 
     namespace DataStructures 
     {
-        public enum MagicSchool // Schools of magic
-        {
-            Conjuration,
-            Necromancy,
-            Evocation,
-            Abjuration,
-            Transmutation,
-            Divination,
-            Enchantment,
-            Illusion
-        }
-
-        public enum CastTimeFrame
-        {
-            Action,
-            BonusAction,
-            Hour,
-            Minute,
-            Reaction
-        }
-        public enum DurationUnit
-        {
-            Round,
-            Minute,
-            Hour,
-            Day
-        }
-        public enum RangeType
-        {
-            Self,
-            Touch,
-            Ranged,
-            Sight,
-            Unlimited
-        }
-        public enum DurationType
-        {
-            Concentration,
-            Instantaneous,
-            Time,
-            UntilDispelled,
-            UntilDispelledOrTriggered
-        }
-        public enum AoeType
-        {
-            Cone,
-            Cube,
-            Cylinder,
-            Line,
-            Sphere,
-            Square
-        }
-        public enum ScalingType // Type of scaling used for spell casting at higher levels [ScaleEffect]
-        {
-            CharacterLvl,
-            SpellLvl,
-            SpellScale
-        }
-        public struct ScaleEffect // Spell Effect At Higher Level
-        {
-            public ScalingType ScaleParam;
-            public string Details;
-            public int ScalingLvl;
-            public int ScaleInterval;
-            public object Value;
-
-            public ScaleEffect(ScalingType scaleParam, int scalingLvl, int scaleInterval, object value, string details)
-            {
-                this.ScaleParam = scaleParam;
-                this.Details = details;
-                this.ScalingLvl = scalingLvl;
-                this.ScaleInterval = scaleInterval;
-                this.Value = value;
-            }
-        }
-
         public struct DiceRoll // Dice Roll Structure ~ 1d4+2
         {
             public int Count;
@@ -207,12 +176,6 @@ namespace JsonFormats
                 this.Electrum = e;
             }
         }
-        public enum AttackType
-        {
-            Melee,
-            Ranged
-        }
-
         public struct Damage
         {
             public DiceRoll Dice;
@@ -262,6 +225,149 @@ namespace JsonFormats
             }
         }
         
+        public enum MagicSchool // Schools of magic
+        {
+            Conjuration,
+            Necromancy,
+            Evocation,
+            Abjuration,
+            Transmutation,
+            Divination,
+            Enchantment,
+            Illusion
+        }
+        public struct CastTime
+        {
+            public int Time;
+            public CastingTimeFrame TimeFrame;
+            public string ReactionTrigger;
+            
+            
+            public CastTime(int time, CastingTimeFrame timeFrame, string reactionTrigger)
+            {
+                this.Time = time;
+                this.TimeFrame = timeFrame;
+                this.ReactionTrigger = reactionTrigger;
+            }
+            
+            public enum CastingTimeFrame
+            {
+                Action,
+                BonusAction,
+                Hour,
+                Minute,
+                Reaction
+            }
+        }
+        public struct SpellComponents
+        {
+            public bool Visual;
+            public bool Semantic;
+            public bool Material;
+            public string RequiredMaterials;
+            
+            public SpellComponents(bool v, bool s, bool m, string requiredMaterials)
+            {
+                this.Visual = v;
+                this.Semantic = s;
+                this.Material = m;
+                this.RequiredMaterials = requiredMaterials;
+            }
+        }
+        public struct Range
+        {   
+            public RangeType Unit;
+            public int MaxRange;
+            public int MinRange;
+            
+            
+            public enum RangeType
+            {
+                Self,
+                Touch,
+                Melee,
+                Ranged,
+                Sight,
+                Unlimited
+            }
+        }
+        public struct Duration
+        {
+            public DurationType Type;
+            public int Value;
+            public DurationUnit Unit;
+
+            public Duration(DurationType type, int value, DurationUnit unit)
+            {
+                this.Type = type;
+                this.Value = value;
+                this.Unit = unit;
+            }
+            
+            public enum DurationType
+            {
+                Concentration,
+                Instantaneous,
+                Time,
+                UntilDispelled,
+                UntilDispelledOrTriggered
+            }
+            public enum DurationUnit
+            {
+                Round,
+                Minute,
+                Hour,
+                Day
+            }
+        }
+        public struct AOE
+        {
+            public int Size;
+            public AoeShape AreaShape;
+            public bool Special;  // If more info is provided in the description
+            
+            public AOE(int size, AoeShape areaShape, bool special)
+            {
+                this.Size = size;
+                this.AreaShape = areaShape;
+                this.Special = special;
+            }
+            
+            public enum AoeShape
+            {
+                Cone,
+                Cube,
+                Cylinder,
+                Line,
+                Sphere,
+                Square
+            }
+        }
+        public struct ScaleEffect // Spell Effect At Higher Level
+        {
+            public ScalingType ScaleParam;
+            public string Details;
+            public int ScalingLvl;
+            public int ScaleInterval;
+            public object Value;
+
+            public ScaleEffect(ScalingType scaleParam, int scalingLvl, int scaleInterval, object value, string details)
+            {
+                this.ScaleParam = scaleParam;
+                this.Details = details;
+                this.ScalingLvl = scalingLvl;
+                this.ScaleInterval = scaleInterval;
+                this.Value = value;
+            }
+            
+            public enum ScalingType // Type of scaling used for spell casting at higher levels [ScaleEffect]
+            {
+                CharacterLvl,
+                SpellLvl,
+                SpellScale
+            }
+        }
+        
         public enum ItemRarity // Item Rarity
         {
             Unknown,
@@ -272,12 +378,6 @@ namespace JsonFormats
             VeryRare,
             Legendary,
             Artifact
-        }
-        public enum ItemType // Item, Weapon or Armour
-        {
-            Item,
-            Weapon,
-            Armour
         }
         public enum ItemSubType // Types of items
         {
@@ -326,80 +426,67 @@ namespace JsonFormats
                 Other,
             }
         }
-        public struct ArmourStatBlock
+        public struct ArmourAc
         {
-            public ArmourSubTypes Type;
-            public ArmourAc ArmourClass;
-            public int MinStrength;
-            public bool StealthDisadvantage;
+            public int Base;
+            public Ability Modifier;
+            public int AbilityMax;
 
-            public ArmourStatBlock(ArmourSubTypes type, ArmourAc ac, int min, bool stealthDis)
+            public ArmourAc(int baseVal, Ability mod, int max)
             {
-                this.Type = type;
-                this.ArmourClass = ac;
-                this.MinStrength = min;
-                this.StealthDisadvantage = stealthDis;
-            }
-
-            public struct ArmourAc
-            {
-                public int Base;
-                public Ability Modifier;
-                public int AbilityMax;
-
-                public ArmourAc(int baseVal, Ability mod, int max)
-                {
-                    this.Base = baseVal;
-                    this.Modifier = mod;
-                    this.AbilityMax = max;
-                }
-            }
-            
-            public enum ArmourSubTypes
-            {
-                Light,
-                Medium,
-                Heavy
+                this.Base = baseVal;
+                this.Modifier = mod;
+                this.AbilityMax = max;
             }
         }
-        public struct WeaponStatBlock
+        public enum ArmourSubTypes
         {
+            Light,
+            Medium,
+            Heavy
+        }
+        public enum WeaponProperty
+        {
+            Light,
+            Finesse,
+            Thrown,
+            TwoHanded,
+            Versatile,
+            Loading,
+            Ammunition,
+            Heavy,
+            Reach,
+            Special
+        }
+        public enum WeaponCategory
+        {
+            Martial_Melee,
+            Martial_Ranged,
+            Simple_Melee,
+            Simple_Ranged
+        }
 
-            public WeaponCategory Category;
-            public Ability BaseAbility;
-            public int AttackBonus;
-            public AttackType Type;
-            public WeaponProperties[] Properties;
-            public Damage[] Dmg;
+        public struct Prerequisite
+        {
+            public PrerequisiteType Type;
+            public object SubType;
+            public int Value;
 
-            public WeaponStatBlock(WeaponCategory cat, AttackType type, WeaponProperties[] prop, Damage[] dmg,
-                Ability baseAbility, int attackBonus)
+            public Prerequisite(PrerequisiteType type, object subType, int value)
             {
-                this.Category = cat;
                 this.Type = type;
-                this.Properties = prop;
-                this.Dmg = dmg;
-                this.BaseAbility = baseAbility;
-                this.AttackBonus = attackBonus;
+                this.SubType = subType;
+                this.Value = value;
             }
             
-            public enum WeaponProperties
+            public enum PrerequisiteType
             {
-                Light,
-                Finesse,
-                Thrown,
-                TwoHanded,
-                Versatile,
-                Loading,
-                Ammunition,
-                Heavy,
-                Reach,
-                Special
-            }
-            public enum WeaponCategory
-            {
-                Martial,
-                Simple
+                AbilityScore,
+                PlayerClass,
+                CustomValue,
+                Feat,
+                Level,
+                Proficiency
             }
         }
         
