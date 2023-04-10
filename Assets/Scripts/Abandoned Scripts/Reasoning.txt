@@ -1,0 +1,5 @@
+Instead of building a complete character builder from the ground up, the choice to make a "live character sheet"
+That can use the characters created in the Aurora character builder was preferred, for simplicity and existing
+content packages.
+
+https://aurorabuilder.com

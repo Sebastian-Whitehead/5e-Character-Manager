@@ -1,0 +1,2 @@
+  git update-index --assume-unchanged Credentials.cs      
+  git update-index --no-assume-unchanged Credentials.cs // Undo the undo credentials github ignore.
