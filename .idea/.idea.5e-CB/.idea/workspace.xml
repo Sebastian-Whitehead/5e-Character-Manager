@@ -14,6 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DataStructures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/ProjectGeneration/AssemblyNameProvider.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -100,7 +101,7 @@
       <workItem from="1680627030143" duration="10622000" />
       <workItem from="1680695035874" duration="1835000" />
       <workItem from="1680812834586" duration="1647000" />
-      <workItem from="1680934858033" duration="36161000" />
+      <workItem from="1680934858033" duration="46594000" />
     </task>
     <servers />
   </component>
