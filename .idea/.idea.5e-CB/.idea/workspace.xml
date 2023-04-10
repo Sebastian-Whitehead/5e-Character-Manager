@@ -6,16 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="b24b9e15-7e9d-4fcc-a697-a4773f369bb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Code Holder.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Code Holder.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ContentManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ContentManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataStructures.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataStructures.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/JsonStructures.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/JsonStructures.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PDF Templates.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SRD_Content.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SRD_Content/Races.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SRD_Content/SRD_Races.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SRD_Content/SRD_Races.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SRD_Content/SRD_Spells.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SRD_Content/SRD_Spells.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SRD_Content/Spells.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts/Code Holder.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts/Code Holder.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts/DataStructures.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts/DataStructures.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts/JSONContentManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts/JSONContentManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts/JsonStructures.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts/JsonStructures.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts/Reasoning.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Abandoned Scripts/Reasoning.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Credentials.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Credentials.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +123,9 @@
       <workItem from="1681152622501" duration="47000" />
       <workItem from="1681152679075" duration="69000" />
       <workItem from="1681152926249" duration="214000" />
+      <workItem from="1681153164904" duration="885000" />
+      <workItem from="1681154329126" duration="1000" />
+      <workItem from="1681154450088" duration="7000" />
     </task>
     <servers />
   </component>
