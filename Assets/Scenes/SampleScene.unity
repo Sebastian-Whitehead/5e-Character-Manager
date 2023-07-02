@@ -134,6 +134,9 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420035}
+  - component: {fileID: 519420034}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -215,3 +218,101 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369ffc083d8902445ab023f28cbfd50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 
+  characterName: 
+  level: 0
+  characterClasses: []
+  characterRace: 
+  health: 0
+  tempHealth: 0
+  maxHealth: 0
+  profBonus: 0
+  walkingSpeed: 0
+  initiative: 0
+  AC: 0
+  defenses: []
+  immunities: []
+  activeConditions: []
+  str: 0
+  dex: 0
+  con: 0
+  inte: 0
+  wis: 0
+  cha: 0
+  conscious: 1
+  alive: 1
+  DS_sucess: 0
+  DS_fail: 0
+  DS_stable: 1
+  pasPerception: 0
+  pasInvestigation: 0
+  pasInsight: 0
+  darkVision: 0
+  armor: []
+  weapons: []
+  tools: []
+  languages: []
+  background: 
+  alignment: 
+  faith: 
+  gender: 
+  size: 
+  eyes: 
+  height: 
+  weight: 
+  hair: 
+  skin: 
+  age: 
+  personalityTraits: 
+  ideals: 
+  bonds: 
+  flaws: 
+  appearance: 
+  carryCapacity: 0
+  carryWeight: 0
+  attunedCount: 0
+  attunedMax: 0
+  organizations: 
+  allies: 
+  enemies: 
+  backstory: 
+  generalNotes: 
+  spellSlots: 
+  expendedSpellSlots: 
+  maxKnown: 
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d939183793f062b48b9eac3027c6d004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b2ed50b910fad40885152c1215d0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
