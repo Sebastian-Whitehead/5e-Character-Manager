@@ -77,13 +77,14 @@ public struct HitDie
 
 public struct Spell
 {
+    // Constructor with given slots and remaining casts
     public Spell(float slots, float remaining)
     {
         SpellSlots = slots;
         Remaining = remaining;
     }
 
-    public Spell()
+    public Spell(bool na) // Alternate constructor for no spell slots of the given level
     {
         SpellSlots = 0;
         Remaining = 0;

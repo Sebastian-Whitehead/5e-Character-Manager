@@ -127,7 +127,7 @@ namespace Character
         public int spellSaveDC;
         public int modifier;
         public int spellAttackModifier;
-       
+        public int sorceryPoints = 0;
 
         //TODO: Features & Traits
         //TODO: Actions
@@ -214,13 +214,13 @@ namespace Character
             spellSlots[0] = new Spell(Mathf.Infinity, Mathf.Infinity); //Cantrips
             spellSlots[1] = new Spell(4, 4);    // Level 1
             spellSlots[2] = new Spell(3, 3);    // Level 2
-            spellSlots[3] = new Spell();    // Level 3
-            spellSlots[4] = new Spell();    // Level 4
-            spellSlots[5] = new Spell();    // ...
-            spellSlots[6] = new Spell();   
-            spellSlots[7] = new Spell();    
-            spellSlots[8] = new Spell();
-            spellSlots[9] = new Spell();
+            spellSlots[3] = new Spell(false);    // Level 3
+            spellSlots[4] = new Spell(false);    // Level 4
+            spellSlots[5] = new Spell(false);    // ...
+            spellSlots[6] = new Spell(false);   
+            spellSlots[7] = new Spell(false);    
+            spellSlots[8] = new Spell(false);
+            spellSlots[9] = new Spell(false);
         }
         
         
