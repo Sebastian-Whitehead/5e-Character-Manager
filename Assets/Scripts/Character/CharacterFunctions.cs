@@ -9,12 +9,13 @@ namespace Character
 {
     public class CharacterFunctions : PlayerCharacter
     {
-        private RngV1 _diceRoller;
+        private Dice _diceRoller;
 
         void Awake()
         {
-            _diceRoller = GetComponent<RngV1>();
+            _diceRoller = GetComponent<Dice>();
         }
+
         // ------------------------------------Health & Death Saves---------------------------------------- // 
         /* Damage the character control. This function checks both for dmg while down and applies relevant
          death saving throws. The function also checks for massive dmg as well as controlling the conscious 
@@ -79,13 +80,14 @@ namespace Character
             DS_fail = DS_sucess = 0;
         }
 
-        // ------------------------------------Resting---------------------------------------- // 
         
+        
+        // ------------------------------------Resting---------------------------------------- // 
         // Short rest functionality: So far only the health regeneration through hit dice. 
         // Using digital dice roll,
         public void ShortRest(int expend)
         {
-            expend = Math.Min(expend, HitDice.Remaining);
+            expend = Mathf.Min(expend, HitDice.Remaining);
             expend += HitDice.Count;
             
             (int total, List<int> rollList) = _diceRoller.RollDice(expend, HitDice.Size);
@@ -101,21 +103,53 @@ namespace Character
         }
         
         // Regenerate x number of hit dice up to the maximum
-        private void RegainHitDie(int count)
+        public void RegainHitDie(int count)
         {
-            HitDice.Remaining = Math.Min(HitDice.Remaining + count, HitDice.Total);
+            HitDice.Remaining = Mathf.Min(HitDice.Remaining + count, HitDice.Total);
         }
 
-        private void LongRest()
+        // Function for long rest
+        public void LongRest()
         {
-            //TODO: Regen spell slots
-            
+            ResetSpellSlots();
             health = maxHealth;
-            RegainHitDie(Math.Max((int)Math.Floor(HitDice.Total/2f), 1));
+            RegainHitDie(Mathf.Max((int)Mathf.Floor(HitDice.Total/2f), 1));
         }
         
+        
+        // ------------------------------------Spells---------------------------------------- // 
+        // Expend a single spell slot of a given level
+        public bool ExpendSpellSlot(int lvl)
+        {
+            if (spellSlots[lvl].Remaining <= 0) return false;   // If no spell slots remaining return.
+            spellSlots[lvl].Remaining--;                        // Expend the spell slot of specified level.
+            return true;
+        }
+
+        // Reset all spell slots
+        public void ResetSpellSlots()
+        {
+            for (int lvl = 0; lvl < 10; lvl++)
+            {
+                spellSlots[lvl].Remaining = spellSlots[lvl].SpellSlots;
+            }
+        }
+        
+        // Regen a number of spell slots of a given level
+        public void RegenSpellSlots(int lvl, int nr)
+        {
+            // Regen spell slots up to the max for a given level
+            spellSlots[lvl].Remaining = Mathf.Min(spellSlots[lvl].Remaining + nr, spellSlots[lvl].SpellSlots); 
+        }
+        
+        
+        
         //TODO: Add to inventory
-        //TODO: Expend Spell
-        //TODO: Manage Spell
+        //TODO: Manage Attuned Items
+        
+        //TODO: Prepare spells
+        
+        //TODO: Add conditions
+        //TODO: add Immunity
     }
 }

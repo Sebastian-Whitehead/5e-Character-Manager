@@ -74,5 +74,21 @@ public struct HitDie
     public int Remaining;
     public int Total;
 }
-    
-//TODO: Spell Struct
+
+public struct Spell
+{
+    public Spell(float slots, float remaining)
+    {
+        SpellSlots = slots;
+        Remaining = remaining;
+    }
+
+    public Spell()
+    {
+        SpellSlots = 0;
+        Remaining = 0;
+    }
+
+    public float SpellSlots;
+    public float Remaining;
+}

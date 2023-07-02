@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace Character
 {
-    [RequireComponent(typeof(RngV1))]
+    [RequireComponent(typeof(Dice))]
     [RequireComponent(typeof(CharacterFunctions))]
+    
     public class CharacterManager : MonoBehaviour
     {
         private CharacterFunctions _pc;
-        private  RngV1 _diceRoller;
-        
+
         private void Awake()
         {
         }
@@ -28,7 +28,35 @@ namespace Character
         // Update is called once per frame
         void Update()
         {
-        
         }
+
+
+        public void DecodeCharacter()
+        {
+            //TODO: Decode character from aurora builder
+        }
+        
+        public void SaveCharacter()
+        {
+            //TODO: Save Character
+        }
+
+        public void LoadCharacter()
+        {
+            //TODO: Load Character
+        }
+
+        public void SaveInventory()
+        {
+            //TODO: Save Character Inventory
+        }
+
+        public void LoadInventory()
+        {
+            //TODO: Load Character Inventory
+        }
+        
+        //TODO: Transfer Inventory
+        
     }
 }

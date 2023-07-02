@@ -121,10 +121,12 @@ namespace Character
         public string backstory;
         public string generalNotes;
 
-        //Spells:
-        public int[] spellSlots; //Null if not spell caster
-        public int[] expendedSpellSlots;
+        //Spells & attacks:
+        public Spell[] spellSlots = new Spell[10];
         public int[] maxKnown;
+        public int spellSaveDC;
+        public int modifier;
+        public int spellAttackModifier;
        
 
         //TODO: Features & Traits
@@ -144,6 +146,7 @@ namespace Character
     
         public void LoadTestCharacter()
         {
+            // Basic Character information.
             characterName = "Jeff";
             level = 2;
             characterClasses = new string[]{"Ranger", "Wizard"};
@@ -157,14 +160,16 @@ namespace Character
             walkingSpeed = 35;
             initiative = 3;
             AC = 16;
-        
+            
+            // Defining base ability scores
             str = 16;
             dex = 17;
             con = 16;
             inte = 14;
             wis = 13;
             cha = 12;
-        
+            
+            // Defning saving throws
             SV_str = new SavingThrow(true, CalculateBonus(str) + profBonus);
             SV_dex = new SavingThrow(false, CalculateBonus(dex));
             SV_con = new SavingThrow(true, CalculateBonus(con) + profBonus);
@@ -172,43 +177,70 @@ namespace Character
             SV_wis = new SavingThrow(false, CalculateBonus(wis)); 
             SV_cha = new SavingThrow(false, CalculateBonus(cha));
             
+            // Defining current number of success and fail
             DS_sucess = 0;
             DS_fail = 0;
-
+            
+            // Defining hitdice
             HitDice = new HitDie(1, 6, 4, 4); // 1d6 total: 4/4
         
+            // Defining and calculating abilities
             acrobatics = new Skill(false, CalculateBonus(dex));
             animalHandling = new Skill(false, CalculateBonus(wis));
             arcana = new Skill(false, CalculateBonus(inte));
-            athletics = new Skill(false, CalculateBonus(str) + profBonus);
+            athletics = new Skill(false, CalculateBonus(str, true));
             deception = new Skill(false, CalculateBonus(cha));
             history = new Skill(false, CalculateBonus(inte));
-            insight = new Skill(true, CalculateBonus(wis) + profBonus);
-            intimidation = new Skill(true, CalculateBonus(cha) + profBonus);
+            insight = new Skill(true, CalculateBonus(wis, true));
+            intimidation = new Skill(true, CalculateBonus(cha, true));
             investigation = new Skill(false, CalculateBonus(inte));
             medicine = new Skill(false, CalculateBonus(wis));
             nature = new Skill(false, CalculateBonus(inte));
-            perception = new Skill(true, CalculateBonus(wis) + profBonus);
+            perception = new Skill(true, CalculateBonus(wis, true));
             performance = new Skill(false, CalculateBonus(cha));
             persuasion = new Skill(false, CalculateBonus(cha));
             religion = new Skill(false, CalculateBonus(inte));
             slightOfHand = new Skill(false, CalculateBonus(dex));
             stealth = new Skill(false, CalculateBonus(dex));
-            survival = new Skill(true, CalculateBonus(wis) + profBonus);
+            survival = new Skill(true, CalculateBonus(wis, true));
 
             pasPerception = 13;
             pasInvestigation = 12;
             pasInvestigation = 13;
             darkVision = 60;
+
+            
+            //Defining Spell slots and remain spells
+            spellSlots[0] = new Spell(Mathf.Infinity, Mathf.Infinity); //Cantrips
+            spellSlots[1] = new Spell(4, 4);    // Level 1
+            spellSlots[2] = new Spell(3, 3);    // Level 2
+            spellSlots[3] = new Spell();    // Level 3
+            spellSlots[4] = new Spell();    // Level 4
+            spellSlots[5] = new Spell();    // ...
+            spellSlots[6] = new Spell();   
+            spellSlots[7] = new Spell();    
+            spellSlots[8] = new Spell();
+            spellSlots[9] = new Spell();
         }
-    
+        
+        
+        // ----------------------------------Calculations---------------------------------------- //
+        
+        // Function to calculate bonus from score
         public int CalculateBonus(float score)
         {
             score -= 10;
-            int bonus = (int)Math.Floor(score / 2);
+            int bonus = (int)Mathf.Floor(score / 2);
             return bonus;
         }
-
-
+        
+        //Function to calculate bonus from score w. proficiency
+        public int CalculateBonus(float score, bool prof)
+        {
+            int bonus = CalculateBonus(score);
+            if (prof) bonus += profBonus; // If proficient add bonus
+            return bonus;
+        }
+        
     }
 }
