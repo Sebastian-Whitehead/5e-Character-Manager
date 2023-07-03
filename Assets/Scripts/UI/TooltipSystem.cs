@@ -28,7 +28,7 @@ public class TooltipSystem : MonoBehaviour
         _current.tooltip.SetText(content, header);
         _current.tooltip.gameObject.SetActive(true);
         
-        LeanTween.value(_group.gameObject, 0, 1, 0.3f).setOnUpdate((float val) =>
+        LeanTween.value(_group.gameObject, 0, 1, 0.2f).setOnUpdate((float val) =>
         {
             _group.alpha = val;
         }); // Fade in over 0.2 seconds
