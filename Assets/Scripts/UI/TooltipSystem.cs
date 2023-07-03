@@ -15,8 +15,7 @@ public class TooltipSystem : MonoBehaviour
     void Awake()
     {
         _current = this;
-        _group = _current.gameObject.GetComponent<CanvasGroup>();
-        //_group = _current.tooltip.gameObject.GetComponent<CanvasGroup>();
+        _group = _current.tooltip.gameObject.GetComponent<CanvasGroup>();
     }
 
     private void Start()
@@ -28,15 +27,11 @@ public class TooltipSystem : MonoBehaviour
     {
         _current.tooltip.SetText(content, header);
         _current.tooltip.gameObject.SetActive(true);
-        LeanTween.alpha(_group.gameObject, 1, 0.3f);
-
-        /* Alternate fade method if the first doesnt work
-         
-        LeanTween.value(gameObject, 0, 1, 0.3f).setOnUpdate((float val) =>
+        
+        LeanTween.value(_group.gameObject, 0, 1, 0.3f).setOnUpdate((float val) =>
         {
             _group.alpha = val;
         }); // Fade in over 0.2 seconds
-        */
     }
 
     public static void Hide()
