@@ -6,29 +6,17 @@ using UnityEngine;
 
 namespace Character
 {
-    [RequireComponent(typeof(DiceEngine))]
-    [RequireComponent(typeof(CharacterFunctions))]
-    
-    public class CharacterManager : MonoBehaviour
+    public class CharacterManager : PlayerCharacter
     {
-        private CharacterFunctions _pc;
-
-        private void Awake()
-        {
-        }
-
         // Start is called before the first frame update
         void Start()
         {
-            _pc = GetComponent<CharacterFunctions>();
-            _pc.LoadTestCharacter();
         }
     
         // Update is called once per frame
         void Update()
         {
         }
-
 
         public void DecodeCharacter()
         {

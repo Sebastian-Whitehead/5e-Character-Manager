@@ -5,16 +5,9 @@ using Dice_rolling;
 
 namespace Dice_rolling
 {
-    [RequireComponent(typeof(DiceEngine))]
-    public class DiceRollString : MonoBehaviour
+    
+    public class DiceRollString : DiceEngine
     {
-        public DiceEngine dice;
-        
-        private void Start()
-        {
-            dice = GetComponent<DiceEngine>();
-        }
-
         // Example formatting: 2d20,4d8,1d4+8
         // TODO: check to see if this function works as expected
         public (int, List<(int ,List<int>)>) StringToRolls(string inputString)
@@ -34,7 +27,7 @@ namespace Dice_rolling
                 rollOrder.Add((Int32.Parse(processing[0]), Int32.Parse(processing[1])));
                 print($"count: {Int32.Parse(processing[0])}, size: {Int32.Parse(processing[1])}");
             }
-            (int, List<(int ,List<int>)>) result = dice.RollDiceList(rollOrder, bonus);
+            (int, List<(int ,List<int>)>) result = RollDiceList(rollOrder, bonus);
             return (result);
         }
         
@@ -57,7 +50,7 @@ namespace Dice_rolling
                 rollOrder.Add((Int32.Parse(dice[0]), Int32.Parse(dice[1]), bonus));
                 print($"count: {Int32.Parse(dice[0])}, size: {Int32.Parse(dice[1])}, bonus: {bonus}");
             }
-            (int, List<(int ,List<int>)>) result = dice.RollDiceListv2(rollOrder);
+            (int, List<(int ,List<int>)>) result = RollDiceListv2(rollOrder);
             return (result);
         }
         
