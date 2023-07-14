@@ -13,6 +13,7 @@ public class FormulaSolve : MonoBehaviour
     private void Start()
     {
         _inputField = GetComponent<TMP_InputField>();
+        _inputField.onSubmit.AddListener(delegate{Calculate(_inputField.text);});
     }
 
     private void Update()
