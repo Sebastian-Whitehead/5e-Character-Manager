@@ -61,7 +61,7 @@ namespace SimpleExpressionEngine
             }
         }
 
-        // Parse an sequence of add/subtract operators
+        // Parse an sequence of add/subtract operators + Dice Roll Operator
         Node ParseMultiplyDivide()
         {
             // Parse the left hand side
@@ -78,6 +78,9 @@ namespace SimpleExpressionEngine
                 else if (_tokenizer.Token == Token.Divide)
                 {
                     op = (a, b) => a / b;
+                }else if (_tokenizer.Token == Token.DiceRoll)
+                {
+                    op = (a, b) => _tokenizer.diceEngine.SimpleDiceRoll(Convert.ToInt32(a), Convert.ToInt32(b));
                 }
 
                 // Binary operator found?

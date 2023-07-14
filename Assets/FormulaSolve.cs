@@ -2,9 +2,10 @@ using System;
 using Dice_rolling;
 using TMPro;
 using UnityEngine;
+using SimpleExpressionEngine;
 
 [RequireComponent(typeof(TMP_InputField))]
-public class FormulaSolve : DiceEngine
+public class FormulaSolve : MonoBehaviour
 {
     private String _formula;
     private TMP_InputField _inputField;
@@ -23,15 +24,42 @@ public class FormulaSolve : DiceEngine
         }
     }
 
-    private void Calculate(String input)
+    class MyLibrary
     {
-        _formula = input;
+        public MyLibrary()
+        {
+            pi = Math.PI;
+        }
+
+        public double pi { get; private set; }
+
+        public double max(double a, double b)
+        {
+            return Math.Max(a, b);
+        }
+
+        public double min(double a, double b)
+        {
+            return Math.Min(a, b);
+        }
+
+        public double dist(double a, double b)
+        {
+            return Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
+        }
     }
-    
-    /*TODO: Implement a math expression engine
-         (https://medium.com/@toptensoftware/writing-a-simple-math-expression-engine-in-c-d414de18d4ce)
-          - include dice rolling implementation with □d□
-          - include min[val1:val2] max[val1:val2]
-          on top of standard ()+-*÷ operators
-    */
+
+    private double Calculate(String inputStr)
+    {
+        // Create a library of helper function
+        var lib = new MyLibrary();
+
+        // Create a context that uses the library
+        var ctx = new ReflectionContext(lib);
+
+        var result = Parser.Parse(inputStr).Eval(ctx);
+        print(result);
+        
+        return result;
+    }
 }

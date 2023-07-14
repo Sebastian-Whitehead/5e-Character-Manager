@@ -10,6 +10,7 @@
         OpenParens,
         CloseParens,
         Comma,
+        DiceRoll,
         Identifier,
         Number,
     }

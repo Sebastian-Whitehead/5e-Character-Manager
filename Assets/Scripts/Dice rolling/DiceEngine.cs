@@ -7,6 +7,18 @@ namespace Dice_rolling
 {
     public class DiceEngine : MonoBehaviour
     {
+        
+        public double SimpleDiceRoll(int count, int size)
+        { 
+            double total = 0; 
+            for (int i = 0; i < count; i++)
+            {
+                total += Random.Range(1, size);
+            }
+            
+            return total;
+        }
+        
         /// <summary>
         /// Method <c>RollDice</c> rolls a number of dice of given size.
         /// </summary>
@@ -27,7 +39,7 @@ namespace Dice_rolling
             
             return (total, rollList);
         }
-        
+
         /// <summary>
         /// Method <c>RollDice</c> rolls a number of dice of given size and adds a bonus to the roll.
         /// </summary>

@@ -1,11 +1,22 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
+using Dice_rolling;
+using UnityEngine;
 
 namespace SimpleExpressionEngine
 {
-    public class Tokenizer
+    [RequireComponent(typeof(DiceEngine))]
+    public class Tokenizer : MonoBehaviour
     {
+        public DiceEngine diceEngine;
+        
+        private void Start()
+        {
+            diceEngine = GetComponent<DiceEngine>();
+        }
+
         public Tokenizer(TextReader reader)
         {
             _reader = reader;
@@ -91,6 +102,11 @@ namespace SimpleExpressionEngine
                 case ',':
                     NextChar();
                     _currentToken = Token.Comma;
+                    return;
+                
+                case 'd':
+                    NextChar();
+                    _currentToken = Token.DiceRoll;
                     return;
             }
 
