@@ -24,4 +24,14 @@ public class EditField : MonoBehaviour
     {
         _textUI.text += text;
     }
+
+    public void ShiftCursor(int nrOfSpaces)
+    {
+        _textUI.caretPosition += nrOfSpaces;
+    }
+
+    public void SetCursorPos(int pos)
+    {
+        _textUI.caretPosition = pos;
+    }
 }

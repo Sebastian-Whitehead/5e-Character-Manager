@@ -42,6 +42,7 @@ namespace Dice_rolling
             return (total, rollList);
         }
         
+        /*
         public (int, List<(int ,List<int>)>) RollDiceList(List<(int count, int size)> rolls, int bonus)
         {
             int total = 0;
@@ -71,6 +72,6 @@ namespace Dice_rolling
             }
             return (total, resultList);
         }
-
+        */
     }
 }
