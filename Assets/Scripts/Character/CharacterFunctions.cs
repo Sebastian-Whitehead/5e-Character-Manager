@@ -9,11 +9,11 @@ namespace Character
 {
     public class CharacterFunctions : PlayerCharacter
     {
-        private Dice _diceRoller;
+        private DiceEngine _diceRoller;
 
         void Awake()
         {
-            _diceRoller = GetComponent<Dice>();
+            _diceRoller = GetComponent<DiceEngine>();
         }
 
         // ------------------------------------Health & Death Saves---------------------------------------- // 
@@ -62,7 +62,7 @@ namespace Character
         }
         
         // Check current death saving throws.
-        public void CheckDeathSaves()
+        private void CheckDeathSaves()
         {
             if (DS_stable) return;
             if (DS_fail >= 3)

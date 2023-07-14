@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Character
 {
-    [RequireComponent(typeof(Dice))]
+    [RequireComponent(typeof(DiceEngine))]
     [RequireComponent(typeof(CharacterFunctions))]
     
     public class CharacterManager : MonoBehaviour

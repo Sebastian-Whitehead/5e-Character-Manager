@@ -11,7 +11,6 @@ public class TooltipSystem : MonoBehaviour
 
     
     
-    
     void Awake()
     {
         _current = this;
