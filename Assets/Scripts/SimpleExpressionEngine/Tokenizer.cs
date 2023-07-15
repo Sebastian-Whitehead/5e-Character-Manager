@@ -4,19 +4,12 @@ using System.IO;
 using System.Text;
 using Dice_rolling;
 using UnityEngine;
+using Dice_rolling;
 
 namespace SimpleExpressionEngine
 {
-    [RequireComponent(typeof(DiceEngine))]
-    public class Tokenizer : MonoBehaviour
+    public class Tokenizer
     {
-        public DiceEngine diceEngine;
-        
-        private void Start()
-        {
-            diceEngine = GetComponent<DiceEngine>();
-        }
-
         public Tokenizer(TextReader reader)
         {
             _reader = reader;

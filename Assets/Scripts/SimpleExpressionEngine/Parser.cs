@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Random = UnityEngine.Random;
 
 namespace SimpleExpressionEngine
 {
@@ -71,9 +72,11 @@ namespace SimpleExpressionEngine
             {
                 // Work out the operator
                 Func<double, double, double> op = null;
+                
+                // Added a dice roll operator 'd' to the method calls on a dice engine for results
                 if (_tokenizer.Token == Token.DiceRoll)
                 {
-                    op = (a, b) => _tokenizer.diceEngine.SimpleDiceRoll(Convert.ToInt32(a), Convert.ToInt32(b));
+                    op = (a, b) => SimpleDiceRoll(Convert.ToInt32(a), Convert.ToInt32(b));
                 }
                 else if (_tokenizer.Token == Token.Multiply)
                 {
@@ -97,6 +100,17 @@ namespace SimpleExpressionEngine
                 // Create a binary node and use it as the left-hand side from now on
                 lhs = new NodeBinary(lhs, rhs, op);
             }
+        }
+
+        private double SimpleDiceRoll(int count, int size)
+        { 
+            double total = 0; 
+            for (int i = 0; i < count; i++)
+            {
+                total += Random.Range(1, size);
+            }
+            
+            return total;
         }
 
 

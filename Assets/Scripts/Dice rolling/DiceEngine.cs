@@ -5,19 +5,8 @@ using Random = UnityEngine.Random;
 
 namespace Dice_rolling
 {
-    public class DiceEngine : MonoBehaviour
+    public class DiceEngine: MonoBehaviour
     {
-        
-        public double SimpleDiceRoll(int count, int size)
-        { 
-            double total = 0; 
-            for (int i = 0; i < count; i++)
-            {
-                total += Random.Range(1, size);
-            }
-            
-            return total;
-        }
         
         /// <summary>
         /// Method <c>RollDice</c> rolls a number of dice of given size.

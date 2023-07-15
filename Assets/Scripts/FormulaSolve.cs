@@ -11,7 +11,7 @@ public class FormulaSolve : MonoBehaviour
 {
     private String _formula;
     private TMP_InputField _inputField;
-    private TextMeshProUGUI _outputField;
+    public TextMeshProUGUI outputField;
     public List<String> history = new List<string>();
     private String _lastFormula;
 
@@ -24,9 +24,14 @@ public class FormulaSolve : MonoBehaviour
     private void Update()
     {
         if (!_inputField.isFocused) return;
-        if (Input.GetKey(KeyCode.KeypadEnter) || Input.GetKey("enter"))
+
+        if (Input.GetKey(KeyCode.KeypadEnter) || Input.GetKey("enter")) Calculate(_inputField.text);
+        if (Input.GetKey(KeyCode.UpArrow)) _inputField.text = _lastFormula.Split(" = ")[0];
+        if (Input.GetKey(KeyCode.C))
         {
-            Calculate(_inputField.text);
+            _inputField.text = "";
+            outputField.text = "";
+            manageHistory("", 0);
         }
     }
 
@@ -64,16 +69,23 @@ public class FormulaSolve : MonoBehaviour
         var ctx = new ReflectionContext(lib);
 
         var result = Parser.Parse(inputStr).Eval(ctx);
-        if (_outputField != null) _outputField.text = result.ToString();
+        if (outputField != null)
+        {
+            // print("Calculating: " + result);
+            outputField.text = inputStr + " = " + result;
+        }
         manageHistory(inputStr, result);
+        _inputField.text = "";
         
         return result;
     }
 
     private void manageHistory(String formula, double result)
     {
-        if (_lastFormula != null) history.Add(_lastFormula);
-        _lastFormula = formula + " : " + result;
+        if (!string.IsNullOrEmpty(_lastFormula)) history.Insert(0, _lastFormula);
+        _lastFormula = formula + " = " + result;
+        if (formula == "") _lastFormula = "";
+        // print("lastformula: " + _lastFormula);
 
         if (history.Count > 3) history.RemoveRange(3, Math.Max(history.Count-3, 0));
     }

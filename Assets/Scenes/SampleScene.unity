@@ -362,6 +362,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputText: {fileID: 499805979}
   slider: {fileID: 61171027}
+--- !u!21 &146992107
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/RoundedCorners
+  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _WidthHeightRadius: {r: 500, g: 244.69, b: 14, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &179116370
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,8 +599,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1218843323}
   - {fileID: 518595661}
+  - {fileID: 1218843323}
+  - {fileID: 1489555135}
   m_Father: {fileID: 1245579922}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -618,14 +658,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 4
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 1
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 4
+  m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 0
@@ -649,7 +689,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 499805979}
+        m_TargetAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+        m_MethodName: ActivateInputField
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -718,6 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4905b18d92f164ab26f0db85a71da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultsField: {fileID: 1218843324}
 --- !u!114 &499805984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,6 +783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98927df978a77a841a3b428e69020415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outputField: {fileID: 1218843324}
+  history: []
 --- !u!1 &518595660
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 518595661}
   - component: {fileID: 518595662}
+  - component: {fileID: 518595663}
   m_Layer: 5
   m_Name: Math Field
   m_TagString: Untagged
@@ -783,6 +839,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
+--- !u!114 &518595663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518595660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb706c8a3537154283f38fe50053b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Math Field
+  content: "c - clear\nenter \t- Solve\ndist(a,b) - Straight line distance"
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,7 +2345,6 @@ RectTransform:
   m_Children:
   - {fileID: 61171026}
   - {fileID: 499805977}
-  - {fileID: 1489555135}
   m_Father: {fileID: 877631059}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2566,6 +2635,7 @@ GameObject:
   - component: {fileID: 1365665973}
   - component: {fileID: 1365665972}
   - component: {fileID: 1365665971}
+  - component: {fileID: 1365665974}
   m_Layer: 5
   m_Name: Dice roll Button
   m_TagString: Untagged
@@ -2688,6 +2758,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365665969}
   m_CullTransparentMesh: 1
+--- !u!114 &1365665974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365665969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb706c8a3537154283f38fe50053b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Dice Roll
+  content: Rolls a number of dice of a specified size
 --- !u!1 &1401775330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,7 +2853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -412.1, y: -335.4}
+  m_AnchoredPosition: {x: -369.3, y: -335.4}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1401775334
@@ -2838,7 +2922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1468822680}
+  m_Material: {fileID: 146992107}
   m_Color: {r: 1, g: 0.97721845, b: 0.86226416, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2876,45 +2960,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!21 &1468822680
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/RoundedCorners
-  m_Shader: {fileID: 4800000, guid: 0bd2ec5d73751e34a814274a454bec41, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _WidthHeightRadius: {r: 500, g: 244.69, b: 14, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &1489555134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,7 +2984,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489555134}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2947,12 +2992,12 @@ RectTransform:
   - {fileID: 2008278053}
   - {fileID: 1616129729}
   - {fileID: 1365665970}
-  m_Father: {fileID: 1245579922}
+  m_Father: {fileID: 499805977}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -153.76, y: -50.9}
+  m_AnchoredPosition: {x: -185.59798, y: -42.861977}
   m_SizeDelta: {x: 69.123, y: 90.2276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489555136
@@ -3383,6 +3428,7 @@ GameObject:
   - component: {fileID: 1616129732}
   - component: {fileID: 1616129731}
   - component: {fileID: 1616129730}
+  - component: {fileID: 1616129733}
   m_Layer: 5
   m_Name: Min Button
   m_TagString: Untagged
@@ -3464,7 +3510,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Min(,)
+          m_StringArgument: min(,)
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1616129731
@@ -3505,6 +3551,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616129728}
   m_CullTransparentMesh: 1
+--- !u!114 &1616129733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616129728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb706c8a3537154283f38fe50053b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Minimum Value
+  content: Returns the minimum of the encapsulated values
 --- !u!1 &1730954310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3888,6 +3948,7 @@ GameObject:
   - component: {fileID: 2008278056}
   - component: {fileID: 2008278055}
   - component: {fileID: 2008278054}
+  - component: {fileID: 2008278057}
   m_Layer: 5
   m_Name: Max Button
   m_TagString: Untagged
@@ -3969,7 +4030,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Max(,)
+          m_StringArgument: max(,)
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2008278055
@@ -4010,6 +4071,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008278052}
   m_CullTransparentMesh: 1
+--- !u!114 &2008278057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008278052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb706c8a3537154283f38fe50053b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: Maximum Value
+  content: Returns the maximum of the encapsulated values
 --- !u!1 &2113473795
 GameObject:
   m_ObjectHideFlags: 0
