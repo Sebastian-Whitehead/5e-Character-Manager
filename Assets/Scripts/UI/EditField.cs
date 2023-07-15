@@ -8,6 +8,7 @@ using UnityEngine;
 public class EditField : MonoBehaviour
 {
     private TMP_InputField _textUI;
+    public TextMeshProUGUI resultsField;
     
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class EditField : MonoBehaviour
     public void ClearField()
     {
         _textUI.text = "";
+        resultsField.text = "";
     }
 
     public void AppendField(String text)

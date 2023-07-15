@@ -71,16 +71,17 @@ namespace SimpleExpressionEngine
             {
                 // Work out the operator
                 Func<double, double, double> op = null;
-                if (_tokenizer.Token == Token.Multiply)
+                if (_tokenizer.Token == Token.DiceRoll)
+                {
+                    op = (a, b) => _tokenizer.diceEngine.SimpleDiceRoll(Convert.ToInt32(a), Convert.ToInt32(b));
+                }
+                else if (_tokenizer.Token == Token.Multiply)
                 {
                     op = (a, b) => a * b;
                 }
                 else if (_tokenizer.Token == Token.Divide)
                 {
                     op = (a, b) => a / b;
-                }else if (_tokenizer.Token == Token.DiceRoll)
-                {
-                    op = (a, b) => _tokenizer.diceEngine.SimpleDiceRoll(Convert.ToInt32(a), Convert.ToInt32(b));
                 }
 
                 // Binary operator found?

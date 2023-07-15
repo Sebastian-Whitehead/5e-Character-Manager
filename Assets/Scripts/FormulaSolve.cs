@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Dice_rolling;
 using TMPro;
 using UnityEngine;
@@ -9,6 +11,9 @@ public class FormulaSolve : MonoBehaviour
 {
     private String _formula;
     private TMP_InputField _inputField;
+    private TextMeshProUGUI _outputField;
+    public List<String> history = new List<string>();
+    private String _lastFormula;
 
     private void Start()
     {
@@ -59,8 +64,22 @@ public class FormulaSolve : MonoBehaviour
         var ctx = new ReflectionContext(lib);
 
         var result = Parser.Parse(inputStr).Eval(ctx);
-        print(result);
+        if (_outputField != null) _outputField.text = result.ToString();
+        manageHistory(inputStr, result);
         
         return result;
+    }
+
+    private void manageHistory(String formula, double result)
+    {
+        if (_lastFormula != null) history.Add(_lastFormula);
+        _lastFormula = formula + " : " + result;
+
+        if (history.Count > 3) history.RemoveRange(3, Math.Max(history.Count-3, 0));
+    }
+
+    private void clearHistory()
+    {
+        history.Clear();
     }
 }
