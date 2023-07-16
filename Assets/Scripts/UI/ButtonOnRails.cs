@@ -9,7 +9,11 @@ public class ButtonOnRails : MonoBehaviour
 {
     [SerializeField] private TMP_InputField inputText;
     [SerializeField] private Slider slider;
+    
+    
+    
     private String _lastText = "";
+    private Vector3 _transformPosition;
 
     public void ShowButton()
     {
