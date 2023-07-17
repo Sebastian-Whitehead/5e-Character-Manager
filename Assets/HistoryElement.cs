@@ -14,7 +14,7 @@ public class HistoryElement : MonoBehaviour, IPointerClickHandler
     public void Start()
     {
         _cg = GetComponent<CanvasGroup>();
-        historyController.Subscribe(this);
+        //historyController.Subscribe(this);
     }
     
     public void PopulateElement(String fill)
