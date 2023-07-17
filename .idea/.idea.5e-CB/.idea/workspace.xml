@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b24b9e15-7e9d-4fcc-a697-a4773f369bb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.5e-CB/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FormulaSolve.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FormulaSolve.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SimpleExpressionEngine/Tokenizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SimpleExpressionEngine/Tokenizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ButtonOnRails.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ButtonOnRails.cs" afterDir="false" />
-    </list>
+    <list default="true" id="b24b9e15-7e9d-4fcc-a697-a4773f369bb9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,7 +127,7 @@
       <workItem from="1689375959644" duration="244000" />
       <workItem from="1689413075425" duration="3883000" />
       <workItem from="1689424500231" duration="5792000" />
-      <workItem from="1689501471953" duration="20215000" />
+      <workItem from="1689501471953" duration="21048000" />
     </task>
     <servers />
   </component>
