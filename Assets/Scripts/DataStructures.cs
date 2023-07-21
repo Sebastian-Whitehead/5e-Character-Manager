@@ -1,3 +1,5 @@
+using System;
+
 public struct Skill
 {
     public Skill(bool prof, int bonus)
@@ -7,6 +9,18 @@ public struct Skill
     }
         
     public bool Prof { get; }
+    public int Bonus { get; }
+}
+
+public struct AbilityScore
+{
+    public AbilityScore(int score, int bonus)
+    {
+        Score = score;
+        Bonus = bonus;
+    }
+        
+    public int Score { get; }
     public int Bonus { get; }
 }
     

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Dice_rolling;
 using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace Character
 {
-    public class CharacterManager : PlayerCharacter
+    public class CharacterManager : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()
@@ -44,6 +45,5 @@ namespace Character
         }
         
         //TODO: Transfer Inventory
-        
     }
 }

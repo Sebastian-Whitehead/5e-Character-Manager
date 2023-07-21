@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Character
 {
@@ -20,55 +22,58 @@ namespace Character
         public int profBonus;
         public int walkingSpeed;
         public int initiative;
-        public int AC;
+        [FormerlySerializedAs("AC")] public int ac;
 
         public string[] defenses;
         public string[] immunities;
         public string[] activeConditions;
 
-    
+        public Dictionary<string, AbilityScore> AbilityScores;
+
         // Ability Scores:
+        /*
         public int str; 
         public int dex;
         public int con;
         public int inte;
         public int wis;
         public int cha;
-
+        */
+        
         // Saving Throw:
-        public SavingThrow SV_str;
-        public SavingThrow SV_dex;
-        public SavingThrow SV_con;
-        public SavingThrow SV_inte;
-        public SavingThrow SV_wis;
-        public SavingThrow SV_cha;
+        public SavingThrow SvStr;
+        public SavingThrow SvDex;
+        public SavingThrow SvCon;
+        public SavingThrow SvInte;
+        public SavingThrow SvWis;
+        public SavingThrow SvCha;
     
         // Death Saves:
         public bool conscious = true;
         public bool alive = true;
-        public int DS_sucess = 0;
-        public int DS_fail = 0;
-        public bool DS_stable = true;
+        [FormerlySerializedAs("DS_sucess")] public int dsSucess = 0;
+        [FormerlySerializedAs("DS_fail")] public int dsFail = 0;
+        [FormerlySerializedAs("DS_stable")] public bool dsStable = true;
         
         // Skills:
-        public Skill acrobatics;
-        public Skill animalHandling;
-        public Skill arcana;
-        public Skill athletics;
-        public Skill deception;
-        public Skill history;
-        public Skill insight;
-        public Skill intimidation;
-        public Skill investigation;
-        public Skill medicine;
-        public Skill nature;
-        public Skill perception;
-        public Skill performance;
-        public Skill persuasion;
-        public Skill religion;
-        public Skill slightOfHand;
-        public Skill stealth;
-        public Skill survival;
+        public Skill Acrobatics;
+        public Skill AnimalHandling;
+        public Skill Arcana;
+        public Skill Athletics;
+        public Skill Deception;
+        public Skill History;
+        public Skill Insight;
+        public Skill Intimidation;
+        public Skill Investigation;
+        public Skill Medicine;
+        public Skill Nature;
+        public Skill Perception;
+        public Skill Performance;
+        public Skill Persuasion;
+        public Skill Religion;
+        public Skill SlightOfHand;
+        public Skill Stealth;
+        public Skill Survival;
 
         // Senses:
         public int pasPerception;
@@ -108,8 +113,8 @@ namespace Character
         public int carryCapacity;
         public float carryWeight;
 
-        public Currency money;
-        public Item[] equipment;
+        public Currency Money;
+        public Item[] Equipment;
     
         public int attunedCount;
         public int attunedMax;
@@ -122,12 +127,17 @@ namespace Character
         public string generalNotes;
 
         //Spells & attacks:
-        public Spell[] spellSlots = new Spell[10];
+        public Spell[] SpellSlots = new Spell[10];
         public int[] maxKnown;
-        public int spellSaveDC;
+        [FormerlySerializedAs("spellSaveDC")] public int spellSaveDc;
         public int modifier;
         public int spellAttackModifier;
         public int sorceryPoints = 0;
+
+        public PlayerCharacter(Dictionary<string, AbilityScore> abilityScores)
+        {
+            this.AbilityScores = abilityScores;
+        }
 
         //TODO: Features & Traits
         //TODO: Actions
@@ -158,50 +168,50 @@ namespace Character
             profBonus = 2;
             walkingSpeed = 35;
             initiative = 3;
-            AC = 16;
-            
+            ac = 16;
+
             // Defining base ability scores
-            str = 16;
-            dex = 17;
-            con = 16;
-            inte = 14;
-            wis = 13;
-            cha = 12;
-            
+            AbilityScores.Add("str", new AbilityScore(16, CalculateBonus(16)));
+            AbilityScores.Add("dex", new AbilityScore(17, CalculateBonus(17)));
+            AbilityScores.Add("con", new AbilityScore(16, CalculateBonus(16)));
+            AbilityScores.Add("int", new AbilityScore(14, CalculateBonus(14)));
+            AbilityScores.Add("wis", new AbilityScore(9, CalculateBonus(9)));
+            AbilityScores.Add("cha", new AbilityScore(6, CalculateBonus(6)));
+
             // Defning saving throws
-            SV_str = new SavingThrow(true, CalculateBonus(str) + profBonus);
-            SV_dex = new SavingThrow(false, CalculateBonus(dex));
-            SV_con = new SavingThrow(true, CalculateBonus(con) + profBonus);
-            SV_inte = new SavingThrow(false, CalculateBonus(inte));
-            SV_wis = new SavingThrow(false, CalculateBonus(wis)); 
-            SV_cha = new SavingThrow(false, CalculateBonus(cha));
+            SvStr = new SavingThrow(true, CalculateBonus(AbilityScores["str"].Score, true));
+            SvDex = new SavingThrow(false, CalculateBonus(AbilityScores["dex"].Score, false));
+            SvCon = new SavingThrow(true, CalculateBonus(AbilityScores["con"].Score, true));
+            SvInte = new SavingThrow(false, CalculateBonus(AbilityScores["int"].Score, true));
+            SvWis = new SavingThrow(false, CalculateBonus(AbilityScores["wis"].Score, false)); 
+            SvCha = new SavingThrow(false, CalculateBonus(AbilityScores["cha"].Score, false));
             
             // Defining current number of success and fail
-            DS_sucess = 0;
-            DS_fail = 0;
+            dsSucess = 0;
+            dsFail = 0;
             
             // Defining hitdice
             HitDice = new HitDie(1, 6, 4, 4); // 1d6 total: 4/4
         
             // Defining and calculating abilities
-            acrobatics = new Skill(false, CalculateBonus(dex));
-            animalHandling = new Skill(false, CalculateBonus(wis));
-            arcana = new Skill(false, CalculateBonus(inte));
-            athletics = new Skill(false, CalculateBonus(str, true));
-            deception = new Skill(false, CalculateBonus(cha));
-            history = new Skill(false, CalculateBonus(inte));
-            insight = new Skill(true, CalculateBonus(wis, true));
-            intimidation = new Skill(true, CalculateBonus(cha, true));
-            investigation = new Skill(false, CalculateBonus(inte));
-            medicine = new Skill(false, CalculateBonus(wis));
-            nature = new Skill(false, CalculateBonus(inte));
-            perception = new Skill(true, CalculateBonus(wis, true));
-            performance = new Skill(false, CalculateBonus(cha));
-            persuasion = new Skill(false, CalculateBonus(cha));
-            religion = new Skill(false, CalculateBonus(inte));
-            slightOfHand = new Skill(false, CalculateBonus(dex));
-            stealth = new Skill(false, CalculateBonus(dex));
-            survival = new Skill(true, CalculateBonus(wis, true));
+            Acrobatics = new Skill(false, CalculateBonus(AbilityScores["dex"].Score, false));
+            AnimalHandling = new Skill(false, CalculateBonus(AbilityScores["wis"].Score, false));
+            Arcana = new Skill(false, CalculateBonus(AbilityScores["int"].Score, false));
+            Athletics = new Skill(false, CalculateBonus(AbilityScores["str"].Score, true));
+            Deception = new Skill(false, CalculateBonus(AbilityScores["cha"].Score, false));
+            History = new Skill(false, CalculateBonus(AbilityScores["int"].Score, false));
+            Insight = new Skill(true, CalculateBonus(AbilityScores["wis"].Score, true));
+            Intimidation = new Skill(true, CalculateBonus(AbilityScores["cha"].Score, true));
+            Investigation = new Skill(false, CalculateBonus(AbilityScores["int"].Score, false));
+            Medicine = new Skill(false, CalculateBonus(AbilityScores["wis"].Score, false));
+            Nature = new Skill(false, CalculateBonus(AbilityScores["int"].Score, false));
+            Perception = new Skill(true, CalculateBonus(AbilityScores["wis"].Score, true));
+            Performance = new Skill(false, CalculateBonus(AbilityScores["cha"].Score, false));
+            Persuasion = new Skill(false, CalculateBonus(AbilityScores["cha"].Score, false));
+            Religion = new Skill(false, CalculateBonus(AbilityScores["int"].Score, false));
+            SlightOfHand = new Skill(false, CalculateBonus(AbilityScores["dex"].Score, false));
+            Stealth = new Skill(false, CalculateBonus(AbilityScores["dex"].Score, false ));
+            Survival = new Skill(true, CalculateBonus(AbilityScores["wis"].Score, true));
 
             pasPerception = 13;
             pasInvestigation = 12;
@@ -210,16 +220,16 @@ namespace Character
 
             
             //Defining Spell slots and remain spells
-            spellSlots[0] = new Spell(Mathf.Infinity, Mathf.Infinity); //Cantrips
-            spellSlots[1] = new Spell(4, 4);    // Level 1
-            spellSlots[2] = new Spell(3, 3);    // Level 2
-            spellSlots[3] = new Spell(false);    // Level 3
-            spellSlots[4] = new Spell(false);    // Level 4
-            spellSlots[5] = new Spell(false);    // ...
-            spellSlots[6] = new Spell(false);   
-            spellSlots[7] = new Spell(false);    
-            spellSlots[8] = new Spell(false);
-            spellSlots[9] = new Spell(false);
+            SpellSlots[0] = new Spell(Mathf.Infinity, Mathf.Infinity); //Cantrips
+            SpellSlots[1] = new Spell(4, 4);    // Level 1
+            SpellSlots[2] = new Spell(3, 3);    // Level 2
+            SpellSlots[3] = new Spell(false);    // Level 3
+            SpellSlots[4] = new Spell(false);    // Level 4
+            SpellSlots[5] = new Spell(false);    // ...
+            SpellSlots[6] = new Spell(false);   
+            SpellSlots[7] = new Spell(false);    
+            SpellSlots[8] = new Spell(false);
+            SpellSlots[9] = new Spell(false);
         }
         
         

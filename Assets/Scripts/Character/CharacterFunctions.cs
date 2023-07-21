@@ -24,15 +24,15 @@ namespace Character
         {
             if (health == 0) // Check if player is already down and apply failed death saves.
             {
-                DS_fail++;
-                if (crit) DS_fail++;
+                dsFail++;
+                if (crit) dsFail++;
             }
 
             // Apply dmg to temp hp first.
             tempHealth -= dmg; 
             dmg = tempHealth * -1;
             health -= dmg; // Remaining dmg applied to health.
-            if (health <= maxHealth * -1) DS_fail = 3; // Massive Dmg Check.
+            if (health <= maxHealth * -1) dsFail = 3; // Massive Dmg Check.
             
             if (health <= 0)  // If health is bellow 0 set to 0.
             {
@@ -64,11 +64,11 @@ namespace Character
         // Check current death saving throws.
         private void CheckDeathSaves()
         {
-            if (DS_stable) return;
-            if (DS_fail >= 3)
+            if (dsStable) return;
+            if (dsFail >= 3)
             {
                 alive = false;
-            } else if (DS_sucess >= 3)
+            } else if (dsSucess >= 3)
             {
                 ResetDeathSaves();
             }
@@ -77,7 +77,7 @@ namespace Character
         // Reset both successful and failed death saving throws.
         private void ResetDeathSaves()
         {
-            DS_fail = DS_sucess = 0;
+            dsFail = dsSucess = 0;
         }
 
         
@@ -121,8 +121,8 @@ namespace Character
         // Expend a single spell slot of a given level
         public bool ExpendSpellSlot(int lvl)
         {
-            if (spellSlots[lvl].Remaining <= 0) return false;   // If no spell slots remaining return.
-            spellSlots[lvl].Remaining--;                        // Expend the spell slot of specified level.
+            if (SpellSlots[lvl].Remaining <= 0) return false;   // If no spell slots remaining return.
+            SpellSlots[lvl].Remaining--;                        // Expend the spell slot of specified level.
             return true;
         }
 
@@ -131,7 +131,7 @@ namespace Character
         {
             for (int lvl = 0; lvl < 10; lvl++)
             {
-                spellSlots[lvl].Remaining = spellSlots[lvl].SpellSlots;
+                SpellSlots[lvl].Remaining = SpellSlots[lvl].SpellSlots;
             }
         }
         
@@ -139,7 +139,7 @@ namespace Character
         public void RegenSpellSlots(int lvl, int nr)
         {
             // Regen spell slots up to the max for a given level
-            spellSlots[lvl].Remaining = Mathf.Min(spellSlots[lvl].Remaining + nr, spellSlots[lvl].SpellSlots); 
+            SpellSlots[lvl].Remaining = Mathf.Min(SpellSlots[lvl].Remaining + nr, SpellSlots[lvl].SpellSlots); 
         }
         
         
@@ -151,5 +151,8 @@ namespace Character
         
         //TODO: Add conditions
         //TODO: add Immunity
+        public CharacterFunctions(Dictionary<string, AbilityScore> abilityScores) : base(abilityScores)
+        {
+        }
     }
 }

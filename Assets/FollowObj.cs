@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FollowObj : MonoBehaviour
 {
+    //TODO: GET THIS TO WORK!!
     [SerializeField] private GameObject objectToFollow;
 
     [Header("Follow Axis: ")] 
