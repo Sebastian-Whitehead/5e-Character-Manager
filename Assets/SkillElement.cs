@@ -60,6 +60,7 @@ public class SkillElement : MonoBehaviour
     // Called when Expertise toggle value is changed
     private void ExpertToggleChanged(Toggle toggle)
     {
+        print("Exp toggled");
         if (toggle.isOn)
         {
             tgl_Proficient.isOn = toggle.isOn;  // Toggle Proficiency to match
@@ -73,6 +74,7 @@ public class SkillElement : MonoBehaviour
     // Called when Proficiency toggle value is changed
     private void ProfToggleChanged(Toggle toggle)
     {
+        print("Prof toggled");
         if (toggle.isOn)
         {
             _bonus = pc.AbilityScores[_baseSkill].Bonus + pc.profBonus; // Calculate New Bonus from base ability score

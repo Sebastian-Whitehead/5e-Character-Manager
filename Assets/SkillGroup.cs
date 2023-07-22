@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class SkillGroup : MonoBehaviour
 {
+    public SavingThrowElement svElement;
     public List<SkillElement> skillElements;
-
+    
     public void LoadSkillList(Dictionary<string, Skill> skills)
     {
         for (int i = 0; i < skills.Count; i++)
