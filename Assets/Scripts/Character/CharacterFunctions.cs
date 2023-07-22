@@ -151,6 +151,8 @@ namespace Character
         
         //TODO: Add conditions
         //TODO: add Immunity
+        
+        
         public CharacterFunctions(Dictionary<string, AbilityScore> abilityScores) : base(abilityScores)
         {
         }

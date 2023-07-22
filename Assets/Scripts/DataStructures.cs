@@ -1,15 +1,24 @@
 using System;
 
+public enum ProfLvl
+{
+    Proficient,
+    Expert,
+    None
+}
+
 public struct Skill
 {
-    public Skill(bool prof, int bonus)
+    public Skill(ProfLvl profLevel, int bonus, string baseVal)
     {
-        Prof = prof;
+        ProfLevel = profLevel;
         Bonus = bonus;
+        BaseVal = baseVal;
     }
-        
-    public bool Prof { get; }
-    public int Bonus { get; }
+
+    public ProfLvl ProfLevel{ get; set; }
+    public int Bonus { get; set; }
+    public string BaseVal { get; }
 }
 
 public struct AbilityScore

@@ -28,26 +28,15 @@ namespace Character
         public string[] immunities;
         public string[] activeConditions;
 
+        // Ability Scores:
         public Dictionary<string, AbilityScore> AbilityScores;
 
-        // Ability Scores:
-        /*
-        public int str; 
-        public int dex;
-        public int con;
-        public int inte;
-        public int wis;
-        public int cha;
-        */
+        // Skills:
+        public Dictionary<string, Skill> SkillList;
         
         // Saving Throw:
-        public SavingThrow SvStr;
-        public SavingThrow SvDex;
-        public SavingThrow SvCon;
-        public SavingThrow SvInte;
-        public SavingThrow SvWis;
-        public SavingThrow SvCha;
-    
+        public Dictionary<string, SavingThrow> SavingThrows;
+
         // Death Saves:
         public bool conscious = true;
         public bool alive = true;
@@ -55,26 +44,6 @@ namespace Character
         [FormerlySerializedAs("DS_fail")] public int dsFail = 0;
         [FormerlySerializedAs("DS_stable")] public bool dsStable = true;
         
-        // Skills:
-        public Skill Acrobatics;
-        public Skill AnimalHandling;
-        public Skill Arcana;
-        public Skill Athletics;
-        public Skill Deception;
-        public Skill History;
-        public Skill Insight;
-        public Skill Intimidation;
-        public Skill Investigation;
-        public Skill Medicine;
-        public Skill Nature;
-        public Skill Perception;
-        public Skill Performance;
-        public Skill Persuasion;
-        public Skill Religion;
-        public Skill SlightOfHand;
-        public Skill Stealth;
-        public Skill Survival;
-
         // Senses:
         public int pasPerception;
         public int pasInvestigation;
@@ -169,8 +138,9 @@ namespace Character
             walkingSpeed = 35;
             initiative = 3;
             ac = 16;
-
+            
             // Defining base ability scores
+            // Standard ORDER: str, dex, con, int, wis, cha
             AbilityScores.Add("str", new AbilityScore(16, CalculateBonus(16)));
             AbilityScores.Add("dex", new AbilityScore(17, CalculateBonus(17)));
             AbilityScores.Add("con", new AbilityScore(16, CalculateBonus(16)));
@@ -179,12 +149,12 @@ namespace Character
             AbilityScores.Add("cha", new AbilityScore(6, CalculateBonus(6)));
 
             // Defning saving throws
-            SvStr = new SavingThrow(true, CalculateBonus(AbilityScores["str"].Score, true));
-            SvDex = new SavingThrow(false, CalculateBonus(AbilityScores["dex"].Score, false));
-            SvCon = new SavingThrow(true, CalculateBonus(AbilityScores["con"].Score, true));
-            SvInte = new SavingThrow(false, CalculateBonus(AbilityScores["int"].Score, true));
-            SvWis = new SavingThrow(false, CalculateBonus(AbilityScores["wis"].Score, false)); 
-            SvCha = new SavingThrow(false, CalculateBonus(AbilityScores["cha"].Score, false));
+            SavingThrows.Add("str", new SavingThrow(true, CalculateSkillBonus(AbilityScores["str"].Score, ProfLvl.Proficient)));
+            SavingThrows.Add("dex", new SavingThrow(false, CalculateSkillBonus(AbilityScores["dex"].Score, ProfLvl.None)));
+            SavingThrows.Add("con", new SavingThrow(true, CalculateSkillBonus(AbilityScores["con"].Score, ProfLvl.Proficient)));
+            SavingThrows.Add("int", new SavingThrow(false, CalculateSkillBonus(AbilityScores["int"].Score, ProfLvl.None)));
+            SavingThrows.Add("wis", new SavingThrow(false, CalculateSkillBonus(AbilityScores["wis"].Score, ProfLvl.None))); 
+            SavingThrows.Add("cha", new SavingThrow(false, CalculateSkillBonus(AbilityScores["cha"].Score, ProfLvl.None)));
             
             // Defining current number of success and fail
             dsSucess = 0;
@@ -194,24 +164,24 @@ namespace Character
             HitDice = new HitDie(1, 6, 4, 4); // 1d6 total: 4/4
         
             // Defining and calculating abilities
-            Acrobatics = new Skill(false, CalculateBonus(AbilityScores["dex"].Score, false));
-            AnimalHandling = new Skill(false, CalculateBonus(AbilityScores["wis"].Score, false));
-            Arcana = new Skill(false, CalculateBonus(AbilityScores["int"].Score, false));
-            Athletics = new Skill(false, CalculateBonus(AbilityScores["str"].Score, true));
-            Deception = new Skill(false, CalculateBonus(AbilityScores["cha"].Score, false));
-            History = new Skill(false, CalculateBonus(AbilityScores["int"].Score, false));
-            Insight = new Skill(true, CalculateBonus(AbilityScores["wis"].Score, true));
-            Intimidation = new Skill(true, CalculateBonus(AbilityScores["cha"].Score, true));
-            Investigation = new Skill(false, CalculateBonus(AbilityScores["int"].Score, false));
-            Medicine = new Skill(false, CalculateBonus(AbilityScores["wis"].Score, false));
-            Nature = new Skill(false, CalculateBonus(AbilityScores["int"].Score, false));
-            Perception = new Skill(true, CalculateBonus(AbilityScores["wis"].Score, true));
-            Performance = new Skill(false, CalculateBonus(AbilityScores["cha"].Score, false));
-            Persuasion = new Skill(false, CalculateBonus(AbilityScores["cha"].Score, false));
-            Religion = new Skill(false, CalculateBonus(AbilityScores["int"].Score, false));
-            SlightOfHand = new Skill(false, CalculateBonus(AbilityScores["dex"].Score, false));
-            Stealth = new Skill(false, CalculateBonus(AbilityScores["dex"].Score, false ));
-            Survival = new Skill(true, CalculateBonus(AbilityScores["wis"].Score, true));
+            SkillList.Add("Acrobatics", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["dex"].Score, ProfLvl.None), "dex"));
+            SkillList.Add("AnimalHandling", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["wis"].Score, ProfLvl.None), "wis"));
+            SkillList.Add("Arcana", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["int"].Score, ProfLvl.None),"int"));
+            SkillList.Add("Athletics", new Skill(ProfLvl.Proficient, CalculateSkillBonus(AbilityScores["str"].Score, ProfLvl.Proficient), "str"));
+            SkillList.Add("Deception", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["cha"].Score, ProfLvl.None), "cha"));
+            SkillList.Add("History", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["int"].Score, ProfLvl.None), "int"));
+            SkillList.Add("Insight", new Skill(ProfLvl.Proficient, CalculateSkillBonus(AbilityScores["wis"].Score, ProfLvl.Proficient), "wis"));
+            SkillList.Add("Intimidation", new Skill(ProfLvl.Proficient, CalculateSkillBonus(AbilityScores["cha"].Score, ProfLvl.Proficient), "cha"));
+            SkillList.Add("Investigation", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["int"].Score, ProfLvl.None), "int"));
+            SkillList.Add("Medicine", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["wis"].Score, ProfLvl.None), "wis"));
+            SkillList.Add("Nature", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["int"].Score, ProfLvl.None), "int"));
+            SkillList.Add("Perception", new Skill(ProfLvl.Proficient, CalculateSkillBonus(AbilityScores["wis"].Score, ProfLvl.Proficient), "wis"));
+            SkillList.Add("Performance", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["cha"].Score, ProfLvl.None), "cha"));
+            SkillList.Add("Persuasion", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["cha"].Score, ProfLvl.None), "cha"));
+            SkillList.Add("Religion", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["int"].Score, ProfLvl.None), "int"));
+            SkillList.Add("SlightOfHand", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["dex"].Score, ProfLvl.None), "dex"));
+            SkillList.Add("Stealth", new Skill(ProfLvl.None, CalculateSkillBonus(AbilityScores["dex"].Score, ProfLvl.None ), "dex"));
+            SkillList.Add("Survival", new Skill(ProfLvl.Expert, CalculateSkillBonus(AbilityScores["wis"].Score, ProfLvl.Expert), "wis"));
 
             pasPerception = 13;
             pasInvestigation = 12;
@@ -235,6 +205,8 @@ namespace Character
         
         // ----------------------------------Calculations---------------------------------------- //
         
+        
+        // TODO: CHECK THAT THIS WORKS WITH EXPERTISE CALCULATIONS
         // Function to calculate bonus from score
         public int CalculateBonus(float score)
         {
@@ -244,10 +216,18 @@ namespace Character
         }
         
         //Function to calculate bonus from score w. proficiency
-        public int CalculateBonus(float score, bool prof)
+        public int CalculateSkillBonus(float score, ProfLvl prof )
         {
             int bonus = CalculateBonus(score);
-            if (prof) bonus += profBonus; // If proficient add bonus
+            switch (prof)
+            {
+                case ProfLvl.Expert:
+                    bonus += (profBonus * 2);
+                    break;
+                case ProfLvl.Proficient:
+                    bonus += profBonus; // If proficient add bonus
+                    break;
+            }
             return bonus;
         }
         

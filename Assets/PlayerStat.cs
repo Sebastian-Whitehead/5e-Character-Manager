@@ -38,7 +38,7 @@ public class PlayerStat : MonoBehaviour, ISettingsEvent
         }
     }
 
-    private string BonusToString(int bonus)
+    private static string BonusToString(int bonus)
     {
         return bonus switch
         {
