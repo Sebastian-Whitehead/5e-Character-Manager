@@ -2283,7 +2283,7 @@ GameObject:
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 08a04b12dd0d5ec4da08f074806d5bf7, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5163,7 +5163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e746e1a743ee6c4e8578200717d83f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCharacter: {fileID: 0}
   strGroup: {fileID: 1163828793}
   dexGroup: {fileID: 1123064024}
   conGroup: {fileID: 1989876071}
@@ -7813,7 +7812,7 @@ GameObject:
   - component: {fileID: 1773887069}
   m_Layer: 0
   m_Name: Character Controller
-  m_TagString: Untagged
+  m_TagString: CharacterData
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

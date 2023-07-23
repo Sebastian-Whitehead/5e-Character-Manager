@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SettingsController
   - DiceEngine
+  - CharacterData
   layers:
   - Default
   - TransparentFX
