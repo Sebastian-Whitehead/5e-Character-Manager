@@ -32,7 +32,7 @@ namespace Character
         public SortedDictionary<string, AbilityScore> AbilityScores;
 
         // Skills:
-        public SortedDictionary<string, Skill> SkillList;
+        public Dictionary<string, Skill> SkillList;
         
         // Saving Throw:
         public Dictionary<string, SavingThrow> SavingThrows;

@@ -20,8 +20,8 @@ public class SkillElement : MonoBehaviour
 
     private void Start()
     {
-        btn_Roll.onClick.AddListener(RollSkill);
-        btn_Edit.onClick.AddListener(EditSkill);
+        btn_Roll.onClick.AddListener(Roll);
+        btn_Edit.onClick.AddListener(Edit);
         tgl_Expert.onValueChanged.AddListener(delegate { ExpertToggleChanged(tgl_Expert); });
         tgl_Proficient.onValueChanged.AddListener(delegate { ProfToggleChanged(tgl_Proficient); });
     }
@@ -57,6 +57,8 @@ public class SkillElement : MonoBehaviour
         _pcSkill = _pc.SkillList[_baseSkill];
     }
 
+
+    // ---------------------------------------- Supporting Functions ----------------------------------------------- //
     
     // Called when Expertise toggle value is changed
     private void ExpertToggleChanged(Toggle toggle)
@@ -71,6 +73,7 @@ public class SkillElement : MonoBehaviour
         _pcSkill.Bonus = _bonus;                // Update pc Bonus Value
         txt_Score.text = Shared.BonusToString(_bonus); // Update UI
     }
+    
     
     // Called when Proficiency toggle value is changed
     private void ProfToggleChanged(Toggle toggle)
@@ -92,17 +95,16 @@ public class SkillElement : MonoBehaviour
     }
 
     
-    // ---------------------------------------- Supporting Functions ----------------------------------------------- //
     
-
-    //TODO: Implement RollSkill
-    private void RollSkill()
+    
+    //TODO: Implement Roll
+    private void Roll()
     {
         
     }
     
-    //TODO: Implement EditSkill
-    private void EditSkill()
+    //TODO: Implement Edit
+    private void Edit()
     {
         
     }
