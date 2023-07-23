@@ -13,7 +13,7 @@ namespace Character
 
         public CharacterFunctions(SortedDictionary<string, AbilityScore> abilityScores, DiceEngine diceRoller) : base(abilityScores)
         {
-            _diceRoller = diceRoller;
+            _diceRoller = GameObject.FindGameObjectWithTag("DiceEngine").GetComponent<DiceEngine>();
         }
 
         void Awake()
