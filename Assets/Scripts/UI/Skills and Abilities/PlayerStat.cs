@@ -5,16 +5,23 @@ using Settings_menu;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 public class PlayerStat : MonoBehaviour, ISettingsEvent
 {
-    [SerializeField] private TextMeshProUGUI bigNumField, smallNumField, titleField;
+    public Button btnEdit, btnRoll;
+    [SerializeField] private TextMeshProUGUI txtBigNum, txtSmallNum, txtTitle;
     public bool invert;
-    public Settings sett;
+    private Settings sett;
+    
 
     private void Start()
     {
         sett.updateSettings.AddListener(UpdateSettings);
+        
+        //TODO: Find Settings by tag
+        //TODO: Find roll engine by tag
     }
 
     public void UpdateSettings()
@@ -24,16 +31,16 @@ public class PlayerStat : MonoBehaviour, ISettingsEvent
 
     public void PopulateField(string title, int stat, int bonus)
     {
-        titleField.text = title;
+        txtTitle.text = title;
         switch (invert)
         {
             case true:
-                bigNumField.text = Shared.BonusToString(bonus);
-                smallNumField.text = stat.ToString();
+                txtBigNum.text = Shared.BonusToString(bonus);
+                txtSmallNum.text = stat.ToString();
                 break;
             case false:
-                bigNumField.text = stat.ToString();
-                smallNumField.text = Shared.BonusToString(bonus) ;
+                txtBigNum.text = stat.ToString();
+                txtSmallNum.text = Shared.BonusToString(bonus) ;
                 break;
         }
     }

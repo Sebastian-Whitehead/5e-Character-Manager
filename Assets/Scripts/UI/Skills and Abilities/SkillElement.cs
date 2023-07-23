@@ -24,6 +24,9 @@ public class SkillElement : MonoBehaviour
         btn_Edit.onClick.AddListener(Edit);
         tgl_Expert.onValueChanged.AddListener(delegate { ExpertToggleChanged(tgl_Expert); });
         tgl_Proficient.onValueChanged.AddListener(delegate { ProfToggleChanged(tgl_Proficient); });
+        
+        //TODO: Find settings by tag
+        //TODO: Find Dice roller by tag
     }
 
     // Initialization function:
