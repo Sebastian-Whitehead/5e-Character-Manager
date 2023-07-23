@@ -1,7 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 
 namespace UI.Interactions
@@ -12,7 +9,7 @@ namespace UI.Interactions
         public GameObject obj;
         
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             _btn = this.GetComponent<Button>();
             _btn.onClick.AddListener(delegate { obj.SetActive(!obj.activeSelf); });

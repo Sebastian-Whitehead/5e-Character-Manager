@@ -1,3 +1,4 @@
+using Character;
 using Dice_rolling;
 using Settings_menu;
 using TMPro;
@@ -15,6 +16,7 @@ namespace UI.Skills_and_Abilities
         [SerializeField] private TextMeshProUGUI txtBigNum, txtSmallNum, txtTitle;
         public bool invert;
         private int _bonus;
+        private PlayerCharacter _pc;
     
     
 
@@ -35,8 +37,9 @@ namespace UI.Skills_and_Abilities
             invert = Settings.InvertAbility;
         }
 
-        public void PopulateField(string title, int stat, int bonus)
+        public void PopulateField(string title, int stat, int bonus, PlayerCharacter passedCharacter)
         {
+            _pc = passedCharacter;
             _bonus = bonus;
             txtTitle.text = title;
             switch (invert)

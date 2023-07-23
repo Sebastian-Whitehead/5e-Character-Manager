@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveSettings : MonoBehaviour
+namespace Settings_menu
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    //TODO: Implement saving and loading of settings
+    public class SaveSettings : MonoBehaviour
     {
+        // Start is called before the first frame update
+        void Start()
+        {
         
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }
