@@ -12,7 +12,7 @@ public class SkillElement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txt_Score, txt_Label, txt_Base;
     [SerializeField] private Button btn_Roll, btn_Edit;
     [SerializeField] private Toggle tgl_Expert, tgl_Proficient;
-    [SerializeField] private PlayerCharacter pc;
+    private PlayerCharacter _pc;
     
     private int _bonus;
     private string _baseSkill, _label;
@@ -24,16 +24,15 @@ public class SkillElement : MonoBehaviour
         btn_Edit.onClick.AddListener(EditSkill);
         tgl_Expert.onValueChanged.AddListener(delegate { ExpertToggleChanged(tgl_Expert); });
         tgl_Proficient.onValueChanged.AddListener(delegate { ProfToggleChanged(tgl_Proficient); });
-        _pcSkill = pc.SkillList[_baseSkill];
     }
 
     // Initialization function:
-    public void PopulateField(string label, int bonus, string skillBase, ProfLvl prof)
+    public void PopulateField(string label, int bonus, string skillBase, ProfLvl prof, PlayerCharacter passedCharacter)
     {
         // Update Text Fields
         txt_Label.text = label;
         txt_Base.text = "(" + skillBase + ")";
-        txt_Score.text = BonusToString(bonus);
+        txt_Score.text = Shared.BonusToString(bonus);
         
         // Update proficiency and expertise toggles Fields
         switch (prof)
@@ -54,6 +53,8 @@ public class SkillElement : MonoBehaviour
         _bonus = bonus;
         _baseSkill = skillBase;
         _label = label;
+        _pc = passedCharacter;
+        _pcSkill = _pc.SkillList[_baseSkill];
     }
 
     
@@ -64,11 +65,11 @@ public class SkillElement : MonoBehaviour
         if (toggle.isOn)
         {
             tgl_Proficient.isOn = toggle.isOn;  // Toggle Proficiency to match
-            _bonus = pc.AbilityScores[_baseSkill].Bonus + (pc.profBonus * 2); // Calculate New Bonus from base ability score
+            _bonus = _pc.AbilityScores[_baseSkill].Bonus + (_pc.profBonus * 2); // Calculate New Bonus from base ability score
             _pcSkill.ProfLevel = ProfLvl.Expert;    // Update Prof Level
         }
         _pcSkill.Bonus = _bonus;                // Update pc Bonus Value
-        txt_Score.text = BonusToString(_bonus); // Update UI
+        txt_Score.text = Shared.BonusToString(_bonus); // Update UI
     }
     
     // Called when Proficiency toggle value is changed
@@ -77,30 +78,22 @@ public class SkillElement : MonoBehaviour
         print("Prof toggled");
         if (toggle.isOn)
         {
-            _bonus = pc.AbilityScores[_baseSkill].Bonus + pc.profBonus; // Calculate New Bonus from base ability score
+            _bonus = _pc.AbilityScores[_baseSkill].Bonus + _pc.profBonus; // Calculate New Bonus from base ability score
             _pcSkill.ProfLevel = ProfLvl.Proficient;    // Update Prof Level
         }
         else
         {
-            _bonus = pc.AbilityScores[_baseSkill].Bonus;    // Calculate New Bonus from base ability score
+            _bonus = _pc.AbilityScores[_baseSkill].Bonus;    // Calculate New Bonus from base ability score
             tgl_Expert.isOn = false;            // Ensure Expertise is off
             _pcSkill.ProfLevel = ProfLvl.None;  // Update Prof Level
         }
         _pcSkill.Bonus = _bonus;                // Update pc Bonus Value
-        txt_Score.text = BonusToString(_bonus); // Update UI
+        txt_Score.text = Shared.BonusToString(_bonus); // Update UI
     }
 
     
     // ---------------------------------------- Supporting Functions ----------------------------------------------- //
-    private static string BonusToString(int bonus)
-    {
-        return bonus switch
-        {
-            > 0 => "+" + bonus,
-            < 0 => "-" + bonus,
-            _ => bonus.ToString()
-        };
-    }
+    
 
     //TODO: Implement RollSkill
     private void RollSkill()

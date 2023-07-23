@@ -11,6 +11,11 @@ namespace Character
     {
         private DiceEngine _diceRoller;
 
+        public CharacterFunctions(SortedDictionary<string, AbilityScore> abilityScores, DiceEngine diceRoller) : base(abilityScores)
+        {
+            _diceRoller = diceRoller;
+        }
+
         void Awake()
         {
             _diceRoller = GetComponent<DiceEngine>();
@@ -151,10 +156,5 @@ namespace Character
         
         //TODO: Add conditions
         //TODO: add Immunity
-        
-        
-        public CharacterFunctions(Dictionary<string, AbilityScore> abilityScores) : base(abilityScores)
-        {
-        }
     }
 }

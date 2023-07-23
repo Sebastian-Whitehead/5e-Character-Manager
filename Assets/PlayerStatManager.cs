@@ -10,7 +10,7 @@ public class PlayerStatManager : MonoBehaviour
 {
     public List<PlayerStat> fieldList;
 
-    public void LoadAbilityScoreList(Dictionary<string, AbilityScore> abilities)
+    public void LoadAbilityScoreList(SortedDictionary<string, AbilityScore> abilities)
     {
         for (int i = 0; i < abilities.Count; i++)
         {

@@ -28,23 +28,13 @@ public class PlayerStat : MonoBehaviour, ISettingsEvent
         switch (invert)
         {
             case true:
-                bigNumField.text = BonusToString(bonus);
+                bigNumField.text = Shared.BonusToString(bonus);
                 smallNumField.text = stat.ToString();
                 break;
             case false:
                 bigNumField.text = stat.ToString();
-                smallNumField.text = BonusToString(bonus) ;
+                smallNumField.text = Shared.BonusToString(bonus) ;
                 break;
         }
-    }
-
-    private static string BonusToString(int bonus)
-    {
-        return bonus switch
-        {
-            > 0 => "+" + bonus,
-            < 0 => "-" + bonus,
-            _ => bonus.ToString()
-        };
     }
 }
