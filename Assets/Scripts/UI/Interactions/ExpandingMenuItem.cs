@@ -31,6 +31,7 @@ namespace UI.Interactions
             _expandingMenu.OnItemClick(_index);
         }
 
+        // Preventing memory leak
         private void OnDestroy()
         {
             _button.onClick.RemoveListener(OnItemClick);

@@ -7,6 +7,8 @@ namespace UI.Interactions
 {
     public class ExpandingMenu : MonoBehaviour
     {
+        
+        //TODO: Refactor other scripts to be more accessible in the unity editor in a similar fashion to the following:
         [Header("space between menu items")] 
         [SerializeField] private Vector2 spacing;
 
