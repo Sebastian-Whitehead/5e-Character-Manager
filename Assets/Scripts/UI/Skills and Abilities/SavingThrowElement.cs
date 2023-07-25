@@ -1,3 +1,4 @@
+using System;
 using Character;
 using Dice_rolling;
 using TMPro;
@@ -82,6 +83,13 @@ namespace UI.Skills_and_Abilities
         private void Edit()
         {
             
+        }
+
+        private void OnDestroy()
+        {
+            tgl_prof.onValueChanged.RemoveListener(delegate { ProfToggleChanged(tgl_prof); });
+            btn_Edit.onClick.RemoveListener(Edit);
+            btn_Roll.onClick.RemoveListener(Roll);
         }
     }
 }

@@ -27,6 +27,7 @@ public class TooltipSystem : MonoBehaviour
         _current.tooltip.SetText(content, header);
         _current.tooltip.gameObject.SetActive(true);
         
+        //TODO: CHOOSE BETWEEN LEANTWEEN AND DOTWEEN AND refactor and remove the opposite
         LeanTween.value(_group.gameObject, 0, 1, 0.2f).setOnUpdate((float val) =>
         {
             _group.alpha = val;

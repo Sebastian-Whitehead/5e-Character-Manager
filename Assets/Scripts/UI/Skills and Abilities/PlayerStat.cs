@@ -1,3 +1,4 @@
+using System;
 using Character;
 using Dice_rolling;
 using Settings_menu;
@@ -68,6 +69,13 @@ namespace UI.Skills_and_Abilities
         private void Edit()
         {
         
+        }
+
+        private void OnDestroy()
+        {
+            _sett.updateSettings.RemoveListener(UpdateSettings);
+            btnEdit.onClick.RemoveListener(Edit);
+            btnRoll.onClick.RemoveListener(Roll);
         }
     }
 }

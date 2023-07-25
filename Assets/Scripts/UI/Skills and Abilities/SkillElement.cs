@@ -1,3 +1,4 @@
+using System;
 using Character;
 using Dice_rolling;
 using TMPro;
@@ -30,7 +31,6 @@ namespace UI.Skills_and_Abilities
         
             // Systems:
             _dice = GameObject.FindGameObjectWithTag("DiceEngine").GetComponent<DiceEngine>();
-
         }
 
         // Initialization function:
@@ -118,6 +118,14 @@ namespace UI.Skills_and_Abilities
         private void Edit()
         {
         
+        }
+
+        private void OnDestroy()
+        {
+            btn_Roll.onClick.RemoveListener(Roll);
+            btn_Edit.onClick.RemoveListener(Edit);
+            tgl_Expert.onValueChanged.RemoveListener(delegate { ExpertToggleChanged(tgl_Expert); });
+            tgl_Proficient.onValueChanged.RemoveListener(delegate { ProfToggleChanged(tgl_Proficient); });
         }
     }
 }
