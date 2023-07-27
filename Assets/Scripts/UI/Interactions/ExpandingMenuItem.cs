@@ -10,7 +10,8 @@ namespace UI.Interactions
         [HideInInspector] public Transform trans;
 
         private ExpandingMenu _expandingMenu;
-        private Button _button;
+        private GUIClickController _button;
+        //private Button _button;
         private int _index;
         
         
@@ -22,19 +23,26 @@ namespace UI.Interactions
             _expandingMenu = trans.parent.GetComponent<ExpandingMenu>();
             _index = trans.GetSiblingIndex() - 1;
 
-            _button = GetComponent<Button>();
-            _button.onClick.AddListener(OnItemClick);
+            _button = GetComponent<GUIClickController>();
+            _button.onLeft.AddListener(OnItemClick);
+            _button.onRight.AddListener(OnItemRClick);
         }
 
         private void OnItemClick()
         {
             _expandingMenu.OnItemClick(_index);
         }
+        
+        private void OnItemRClick()
+        {
+            _expandingMenu.OnItemRClick(_index);
+        }
 
         // Preventing memory leak
         private void OnDestroy()
         {
-            _button.onClick.RemoveListener(OnItemClick);
+            _button.onLeft.RemoveListener(OnItemClick);
+            _button.onRight.RemoveListener(OnItemRClick);
         }
     }
 }

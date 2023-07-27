@@ -43,6 +43,8 @@ namespace UI.Interactions
 
         private Vector2 _mainButtonPosition;
         private int _itemsCount;
+
+        private int _d4, _d6, _d8, _d10, _d100, _d12, _d20;
         
         // Start is called before the first frame update
         void Start()
@@ -61,6 +63,7 @@ namespace UI.Interactions
             _mainButtonPosition = _mainButton.transform.position;
 
             ResetPositions();
+            _d4 = _d6 = _d8 = _d10 = _d100 = _d12 = _d20 = 0;
         }
 
         private void ResetPositions()
@@ -88,7 +91,7 @@ namespace UI.Interactions
                 for (int i = startingValue; i <_itemsCount; i++) // (Change start value to 0 for reuse)
                 {
                     //_menuItems[i].trans.position = _mainButtonPosition + spacing * (i + 1);
-                    _menuItems[i].trans.DOMove(_mainButtonPosition + spacing * (i + 1), expandDuration)
+                    _menuItems[i].trans.DOMove(_mainButtonPosition + spacing * (i + 1 - startingValue), expandDuration)
                         .SetEase(expandEase);
                     _menuItems[i].img.DOFade(1f, expandFadeDuration).From(0f);
                 }
@@ -109,6 +112,9 @@ namespace UI.Interactions
                     _menuItems[i].trans.DOMove(_mainButtonPosition, collapseDuration).SetEase(collapseEase);
                     _menuItems[i].img.DOFade(0f, collapseFadeDuration);
                 }
+                
+                // Reset prepared roll
+                _d4 = _d6 = _d8 = _d10 = _d100 = _d12 = _d20 = 0;
             }
             
             //rotate main button
@@ -125,27 +131,71 @@ namespace UI.Interactions
                 
                 //TODO: Implement the given buttons functionality
                 case 0:   // 1st button
+                    //TODO: Implement roll list call
                     break;
                 case 1:   // 2nd button
+                    _d4++;
                     break;
                 case 2:   // 3rd button
+                    _d6++;
                     break;
                 case 3:   // 4th button
+                    _d8++;
                     break;
                 case 4:   // 5th button
+                    _d10++;
                     break;
                 case 5:   // 6th button
+                    _d12++;
                     break;
                 case 6:   // 7th button
+                    _d20++;
+                    break;
+                case 7:   // 8th button
+                    _d100++;
                     break;
             }
         }
 
+        public void OnItemRClick(int index)
+        {
+            switch (index)
+            {
+                
+                //TODO: Implement the given buttons functionality
+                case 0:   // 1st button
+                    break;
+                case 1:   // 2nd button
+                    _d4--;
+                    break;
+                case 2:   // 3rd button
+                    _d6--;
+                    break;
+                case 3:   // 4th button
+                    _d8--;
+                    break;
+                case 4:   // 5th button
+                    _d10--;
+                    break;
+                case 5:   // 6th button
+                    _d12--;
+                    break;
+                case 6:   // 7th button
+                    _d20--;
+                    break;
+                case 7:   // 8th button
+                    _d100--;
+                    break;
+            }
+        }
+        
         
         // Preventing memory leaks
         private void OnDestroy()
         {
             _mainButton.onClick.RemoveListener(ToggleMenu);
         }
+
+        
     }
 }
