@@ -1,7 +1,10 @@
 using System;
+using System.Data;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
+using Unity.VisualScripting;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 namespace UI.Interactions
 {
@@ -28,6 +31,11 @@ namespace UI.Interactions
         [Header("Fading")] 
         [SerializeField] private float expandFadeDuration;
         [SerializeField] private float collapseFadeDuration;
+        
+        [Space] 
+        [Header("Other")]
+        [SerializeField] private bool rotateFirstButtonSeparately;
+        [SerializeField] private float firstButtonRotation;
 
         private Button _mainButton;
         private ExpandingMenuItem[] _menuItems;
@@ -66,21 +74,36 @@ namespace UI.Interactions
         public void ToggleMenu()
         {
             _isExpanded = !_isExpanded;
-
+            var startingValue = 0;
             if (_isExpanded)
             {
                 //menu opened
-                for (int i = 0; i <_itemsCount; i++)
+                if(rotateFirstButtonSeparately){
+                    _menuItems[0].trans
+                    .DOMove(_mainButtonPosition + (Shared.Rotate(spacing, firstButtonRotation)), expandDuration)
+                    .SetEase(expandEase);
+                    startingValue = 1;
+                }
+                
+                for (int i = startingValue; i <_itemsCount; i++) // (Change start value to 0 for reuse)
                 {
                     //_menuItems[i].trans.position = _mainButtonPosition + spacing * (i + 1);
-                    _menuItems[i].trans.DOMove(_mainButtonPosition + spacing * (i + 1), expandDuration).SetEase(expandEase);
+                    _menuItems[i].trans.DOMove(_mainButtonPosition + spacing * (i + 1), expandDuration)
+                        .SetEase(expandEase);
                     _menuItems[i].img.DOFade(1f, expandFadeDuration).From(0f);
                 }
             }
             else
             {
                 //menu closed
-                for (int i = 0; i < _itemsCount; i++)
+                if(rotateFirstButtonSeparately){
+                    _menuItems[0].trans
+                        .DOMove(_mainButtonPosition + (Shared.Rotate(spacing, firstButtonRotation)), collapseDuration)
+                        .SetEase(collapseEase);
+                    startingValue = 1;
+                }
+                
+                for (int i = startingValue; i < _itemsCount; i++)
                 {
                     //_menuItems[i].trans.position = _mainButtonPosition;
                     _menuItems[i].trans.DOMove(_mainButtonPosition, collapseDuration).SetEase(collapseEase);

@@ -39,4 +39,14 @@ static class Shared
         }
         return bonus;
     }
+    
+    public static Vector2 Rotate(Vector2 v, float deltaDegrees) {
+        // Convert degrees to radians
+        var deltaRadians = Mathf.Deg2Rad * deltaDegrees;
+
+        return new Vector2(
+            v.x * Mathf.Cos(deltaRadians) - v.y * Mathf.Sin(deltaRadians),
+            v.x * Mathf.Sin(deltaRadians) + v.y * Mathf.Cos(deltaRadians)
+            );
+    }
 }
